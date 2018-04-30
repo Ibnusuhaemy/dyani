@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Form Pemesanan - Dyani Printing</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+        <!--base css styles-->
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+
+        <!--page specific css styles-->
+		<link rel="stylesheet" type="text/css" href="assets/bootstrap-timepicker/compiled/timepicker.css" />
+        <link rel="stylesheet" href="assets/data-tables/bootstrap3/dataTables.bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="assets/bootstrap-datepicker/css/datepicker.css" />
+        <!--flaty css styles-->
+        <link rel="stylesheet" href="css/flaty.css">
+        <link rel="stylesheet" href="css/flaty-responsive.css">
+
+        <link rel="shortcut icon" href="img/favicon.png">
+    </head>
+    <body>
+
+
+        <!-- BEGIN Navbar -->
+        <div id="navbar" class="navbar">
+            <button type="button" class="navbar-toggle navbar-btn collapsed" data-toggle="collapse" data-target="#sidebar">
+                <span class="fa fa-bars"></span>
+            </button>
+            <a class="navbar-brand" href="#">
+                <small>
+                    <i class="fa fa-desktop"></i>
+                    Dyani Printing
+                </small>
+            </a>
+
+            <!-- BEGIN Navbar Buttons -->
+            <ul class="nav flaty-nav pull-right">
+
+                <!-- BEGIN Button Notifications -->
+                <li class="hidden-xs">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <i class="fa fa-bell"></i>
+                        <span class="badge badge-important">2</span>
+                    </a>
+
+                    <!-- BEGIN Notifications Dropdown -->
+                    <ul class="dropdown-navbar dropdown-menu">
+                        <li class="nav-header">
+                            <i class="fa fa-warning"></i>
+                            2 Notifications
+                        </li>
+
+                        <li class="notify">
+                            <a href="#">
+                                <i class="fa fa-warning orange"></i>
+                                <p>Stok Tinta Cair Biru tinggal 5 liter</p>
+                            </a>
+                        </li>
+
+                        <li class="notify">
+                            <a href="#">
+                                <i class="fa fa-shopping-cart green"></i>
+                                <p>Hari ini ada 4 order baru</p>
+                            </a>
+                        </li>
+
+                        <li class="more">
+                            <a href="#">See all notifications</a>
+                        </li>
+                    </ul>
+                    <!-- END Notifications Dropdown -->
+                </li>
+                <!-- END Button Notifications -->
+
+                <!-- BEGIN Button User -->
+                <li class="user-profile">
+                    <a data-toggle="dropdown" href="#" class="user-menu dropdown-toggle">
+                        <img class="nav-user-photo" src="img/demo/avatar/avatar1.jpg" alt="Penny's Photo" />
+                        <span class="hhh" id="user_info">
+                            Administrator
+                        </span>
+                        <i class="fa fa-caret-down"></i>
+                    </a>
+
+                    <!-- BEGIN User Dropdown -->
+                    <ul class="dropdown-menu dropdown-navbar" id="user_menu">
+                        <li class="nav-header">
+                            <i class="fa fa-clock-o"></i>
+                            Logined From 20:45
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-cog"></i>
+                                Account Settings
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-user"></i>
+                                Edit Profile
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-question"></i>
+                                Help
+                            </a>
+                        </li>
+
+                        <li class="divider visible-xs"></li>
+
+                        <li class="visible-xs">
+                            <a href="#">
+                                <i class="fa fa-tasks"></i>
+                                Tasks
+                                <span class="badge badge-warning">4</span>
+                            </a>
+                        </li>
+                        <li class="visible-xs">
+                            <a href="#">
+                                <i class="fa fa-bell"></i>
+                                Notifications
+                                <span class="badge badge-important">8</span>
+                            </a>
+                        </li>
+                        <li class="visible-xs">
+                            <a href="#">
+                                <i class="fa fa-envelope"></i>
+                                Messages
+                                <span class="badge badge-success">5</span>
+                            </a>
+                        </li>
+
+                        <li class="divider"></li>
+
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-off"></i>
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- BEGIN User Dropdown -->
+                </li>
+                <!-- END Button User -->
+            </ul>
+            <!-- END Navbar Buttons -->
+        </div>
+        <!-- END Navbar -->
+
+        <!-- BEGIN Container -->
+        <div class="container" id="main-container">
+            <!-- BEGIN Sidebar -->
+            <div id="sidebar" class="navbar-collapse collapse">
+                <!-- BEGIN Navlist -->
+                <ul class="nav nav-list">
+                    <li>
+                        <a href="index.html">
+                            <i class="glyphicon glyphicon-home"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                            <a href="#" class="dropdown-toggle">
+                                <i class="fa fa-archive"></i>
+                                <span>Master</span>
+                                <b class="arrow fa fa-angle-right"></b>
+                            </a>
+                            <!-- BEGIN Submenu -->
+                            <ul class="submenu">
+                                        <li>
+                                            <a href="tkonsumen.html">
+                                                <i class="glyphicon glyphicon-user"></i>
+                                                <span>Konsumen</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="tkaryawan.html">
+                                                <i class="fa fa-users"></i>
+                                                <span>Karyawan</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="tbahan.html">
+                                                <i class="glyphicon glyphicon-list-alt"></i>
+                                                <span>Bahan Baku</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="tkategori.html">
+                                                <i class="glyphicon glyphicon-tasks"></i>
+                                                <span>Kategori Bahan</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="tukuran.html">
+                                                <i class="fa fa-tags"></i>
+                                                <span>Ukuran</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                                <a href="tbank.html">
+                                                    <i class="fa fa-credit-card"></i>
+                                                    <span>Bank</span>
+                                                </a>
+                                        </li>
+                                        <li>
+                                            <a href="tsup.html">
+                                                <i class="fa fa-briefcase"></i>
+                                                <span>Supplier</span>
+                                            </a>
+                                        </li>
+                            </ul>
+                            <!-- END Submenu -->
+                    </li>
+                    <li class="active">
+                        <a href="tdatapesan.html">
+                            <i class="glyphicon glyphicon-user"></i>
+                            <span>Pemesanan</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="torder.html">
+                            <i class="fa fa-users"></i>
+                            <span>Order Desain</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="tproduksi.html">
+                            <i class="glyphicon glyphicon-list-alt"></i>
+                            <span>Produksi</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ttransaksi.html">
+                            <i class="glyphicon glyphicon-tasks"></i>
+                            <span>Transaksi Gudang</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="tlaporan.html">
+                            <i class="fa fa-tags"></i>
+                            <span>Laporan Data</span>
+                        </a>
+                    </li>
+                </ul>
+                <!-- END Navlist -->
+
+                <!-- BEGIN Sidebar Collapse Button -->
+                <div id="sidebar-collapse" class="visible-lg">
+                    <i class="fa fa-angle-double-left"></i>
+                </div>
+                <!-- END Sidebar Collapse Button -->
+            </div>
+            <!-- END Sidebar -->
+
+            <!-- BEGIN Content -->
+            <div id="main-content">
+                <!-- BEGIN Page Title -->
+                <div class="page-title">
+                    <div>
+                        <h1><i class="fa fa-file-o"></i> Tabel Data Pemesanan</h1>
+                    </div>
+                </div>
+                <!-- END Page Title -->
+
+                <!-- BEGIN Breadcrumb -->
+                <div id="breadcrumbs">
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="fa fa-home"></i>
+                            <a href="index.html">Home</a>
+                            <span class="divider"><i class="fa fa-angle-right"></i></span>
+                        </li>
+                        <li class="active">Data Pemesanan</li>
+                    </ul>
+                </div>
+                <!-- END Breadcrumb -->
+
+                <!-- BEGIN Main Content -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="box">
+                            <div class="box-title">
+                                <h3><i class="fa fa-table"></i> Form Data Pemesanan</h3>
+                            </div>
+							  
+							   <div class="box-content">
+									<form action="#" class="form-horizontal" id="validation-form" method="post">
+										<div class="form-group">
+											<label class="col-sm-3 col-lg-2 control-label" for="username">No Pesanan:</label>
+											<div class="col-sm-6 col-lg-4 controls">
+												<input type="number" name="username" id="username" class="form-control" data-rule-required="true" data-rule-minlength="1" />
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-3 col-lg-2 control-label" for="konsumen">Nama Konsumen:</label>
+											<div class="col-sm-6 col-lg-4 controls">
+												<input type="text" name="konsumen" id="konsumen" class="form-control" data-rule-required="true" data-rule-minlength="3" />
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-3 col-lg-2 control-label" for="nama">No Telp Konsumen:</label>
+											<div class="col-sm-6 col-lg-4 controls">
+												<input type="number" name="nama" id="nama" class="form-control" data-rule-required="true" data-rule-minlength="4" />
+											</div>
+										</div>
+										 <div class="form-group">
+										  <label class="col-sm-3 col-lg-2 control-label">Tanggal Pesan:</label>
+										  <div class="col-sm-6 col-lg-4 controls">
+											 <input class="form-control date-picker" id="dp1" size="16" type="text" value="12-04-2018" />
+										  </div>
+										</div>
+										<div class="form-group">
+										  <label class="col-sm-3 col-lg-2 control-label">Tanggal Selesai:</label>
+										  <div class="col-sm-6 col-lg-4 controls">
+											 <input class="form-control date-picker" id="dp1" size="16" type="text" value="22-04-2018" />
+										  </div>
+										</div>
+										 <div class="form-group">
+											  <label class="col-sm-3 col-lg-2 control-label">Waktu Selesai</label>
+											  <div class="col-sm-6 col-lg-4 controls">
+												 <div class="input-group">
+													<a class="input-group-addon" href="#"><i class="fa fa-clock-o"></i></a>
+													<input class="form-control timepicker-24" type="text">
+												 </div>
+											  </div>
+										   </div>
+										<div class="form-group">
+											<label class="col-sm-3 col-lg-2 control-label" for="jenis">Jenis Pesanan:</label>
+											<div class="col-sm-6 col-lg-4 controls">
+												<input type="text" name="jenis" id="jenis" class="form-control" data-rule-required="true" data-rule-minlength="3" />
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-3 col-lg-2 control-label" for="jumlah">Jumlah Pesanan:</label>
+											<div class="col-sm-6 col-lg-4 controls">
+												<input type="number" name="jumlah" id="jumlah" class="form-control" data-rule-required="true" data-rule-minlength="3" />
+											</div>
+										</div>
+										<div class="form-group">
+										  <label class="col-sm-3 col-lg-2 control-label">Bahan</label>
+										  <div class="col-sm-6 col-lg-4 controls">
+											 <select class="form-control" data-placeholder="Choose a Category" tabindex="1">
+												<option value="">Select...</option>
+												<option value="Category 1">Category 1</option>
+												<option value="Category 2">Category 2</option>
+												<option value="Category 3">Category 5</option>
+												<option value="Category 4">Category 4</option>
+											 </select>
+										  </div>
+									   </div>
+										<div class="form-group">
+											<label class="col-sm-3 col-lg-2 control-label" for="spes">Spesifikasi:</label>
+											<div class="col-sm-6 col-lg-4 controls">
+												<input type="text" name="spes" id="spes" class="form-control" data-rule-required="true" data-rule-minlength="3" />
+											</div>
+										</div>
+										<div class="form-group">
+										  <label class="col-sm-3 col-lg-2 control-label">Nama CS</label>
+										  <div class="col-sm-6 col-lg-4 controls">
+											 <select class="form-control" data-placeholder="Choose a Category" tabindex="1">
+												<option value="">Select...</option>
+												<option value="Category 1">Category 1</option>
+												<option value="Category 2">Category 2</option>
+												<option value="Category 3">Category 5</option>
+												<option value="Category 4">Category 4</option>
+											 </select>
+										  </div>
+									   </div>
+										<div class="form-group">
+											<label class="col-sm-3 col-lg-2 control-label" for="fin">Jenis Finishing:</label>
+											<div class="col-sm-6 col-lg-4 controls">
+												<input type="text" name="fin" id="fin" class="form-control" data-rule-required="true" data-rule-minlength="3" />
+											</div>
+										</div>
+										<div class="form-group">
+										  <label class="col-sm-3 col-lg-2 control-label">Tipe Pembayaran</label>
+										  <div class="col-sm-6 col-lg-4 controls">
+											 <select class="form-control" data-placeholder="Choose a Category" tabindex="1">
+												<option value="">Select...</option>
+												<option value="Category 1">Tunai</option>
+												<option value="Category 2">Transfer</option>
+											 </select>
+										  </div>
+									   </div>
+										<div class="form-group">
+											<label class="col-sm-3 col-lg-2 control-label" for="bay">Jumlah Bayar:</label>
+											<div class="col-sm-6 col-lg-4 controls">
+												<input type="text" name="bay" id="bay" class="form-control" data-rule-required="true" data-rule-minlength="3" />
+											</div>
+										</div>
+										<div class="form-group">
+										  <label class="col-sm-3 col-lg-2 control-label">Kekurangan Bayar</label>
+										  <div class="col-sm-6 col-lg-4 controls">
+											 <input class="form-control" type="text" placeholder="Disabled input here..." disabled />
+										  </div>
+									   </div>
+										<div class="form-group">
+											<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2">
+												<input type="submit" class="btn btn-success" value="Submit">
+												<a class="btn" href="tdatapesan.html">Cancel</a>
+											</div>
+										</div>
+									</form>
+							   </div>
+                             
+                              
+                        </div>
+                    </div>
+                </div>
+                <!-- END Main Content -->
+                
+                <footer>
+                    <p>2018 © Dyani Printing</p>
+                </footer>
+
+                <a id="btn-scrollup" class="btn btn-circle btn-lg" href="#"><i class="fa fa-chevron-up"></i></a>
+            </div>
+            <!-- END Content -->
+        </div>
+        <!-- END Container -->
+
+
+        <!--basic scripts-->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="assets/jquery/jquery-2.1.4.min.js"><\/script>')</script>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="assets/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+        <script src="assets/jquery-cookie/jquery.cookie.js"></script>
+		
+		 <script type="text/javascript" src="assets/jquery-validation/dist/jquery.validate.min.js"></script>
+        <script type="text/javascript" src="assets/jquery-validation/dist/additional-methods.min.js"></script>
+        <script type="text/javascript" src="assets/chosen-bootstrap/chosen.jquery.min.js"></script>
+
+        <!--page specific plugin scripts-->
+        <script type="text/javascript" src="assets/data-tables/jquery.dataTables.js"></script>
+        <script type="text/javascript" src="assets/data-tables/bootstrap3/dataTables.bootstrap.js"></script>
+		<script type="text/javascript" src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+		<script type="text/javascript" src="assets/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+
+        <!--flaty scripts-->
+        <script src="js/flaty.js"></script>
+        <script src="js/flaty-demo-codes.js"></script>
+
+    </body>
+</html>

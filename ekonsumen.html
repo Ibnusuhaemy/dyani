@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Form Konsumen - Dyani Printing</title>
+        <title>Form Edit Konsumen - Dyani Printing</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -23,61 +23,6 @@
         <link rel="shortcut icon" href="img/favicon.png">
     </head>
     <body>
-
-        <!-- BEGIN Theme Setting -->
-        <div id="theme-setting">
-            <a href="#"><i class="fa fa-gears fa fa-2x"></i></a>
-            <ul>
-                <li>
-                    <span>Skin</span>
-                    <ul class="colors" data-target="body" data-prefix="skin-">
-                        <li class="active"><a class="blue" href="#"></a></li>
-                        <li><a class="red" href="#"></a></li>
-                        <li><a class="green" href="#"></a></li>
-                        <li><a class="orange" href="#"></a></li>
-                        <li><a class="yellow" href="#"></a></li>
-                        <li><a class="pink" href="#"></a></li>
-                        <li><a class="magenta" href="#"></a></li>
-                        <li><a class="gray" href="#"></a></li>
-                        <li><a class="black" href="#"></a></li>
-                    </ul>
-                </li>
-                <li>
-                    <span>Navbar</span>
-                    <ul class="colors" data-target="#navbar" data-prefix="navbar-">
-                        <li class="active"><a class="blue" href="#"></a></li>
-                        <li><a class="red" href="#"></a></li>
-                        <li><a class="green" href="#"></a></li>
-                        <li><a class="orange" href="#"></a></li>
-                        <li><a class="yellow" href="#"></a></li>
-                        <li><a class="pink" href="#"></a></li>
-                        <li><a class="magenta" href="#"></a></li>
-                        <li><a class="gray" href="#"></a></li>
-                        <li><a class="black" href="#"></a></li>
-                    </ul>
-                </li>
-                <li>
-                    <span>Sidebar</span>
-                    <ul class="colors" data-target="#main-container" data-prefix="sidebar-">
-                        <li class="active"><a class="blue" href="#"></a></li>
-                        <li><a class="red" href="#"></a></li>
-                        <li><a class="green" href="#"></a></li>
-                        <li><a class="orange" href="#"></a></li>
-                        <li><a class="yellow" href="#"></a></li>
-                        <li><a class="pink" href="#"></a></li>
-                        <li><a class="magenta" href="#"></a></li>
-                        <li><a class="gray" href="#"></a></li>
-                        <li><a class="black" href="#"></a></li>
-                    </ul>
-                </li>
-                <li>
-                    <span></span>
-                    <a data-target="navbar" href="#"><i class="fa fa-square-o"></i> Fixed Navbar</a>
-                    <a class="hidden-inline-xs" data-target="sidebar" href="#"><i class="fa fa-square-o"></i> Fixed Sidebar</a>
-                </li>
-            </ul>
-        </div>
-        <!-- END Theme Setting -->
 
         <div id="navbar" class="navbar">
             <button type="button" class="navbar-toggle navbar-btn collapsed" data-toggle="collapse" data-target="#sidebar">
@@ -194,7 +139,7 @@
                         <li class="divider"></li>
 
                         <li>
-                            <a href="#">
+                            <a href="login.html">
                                 <i class="fa fa-off"></i>
                                 Logout
                             </a>
@@ -214,82 +159,97 @@
             <div id="sidebar" class="navbar-collapse collapse">
                 <!-- BEGIN Navlist -->
                 <ul class="nav nav-list">
-                    <li>
-                        <a href="index.html">
-                            <i class="glyphicon glyphicon-home"></i>
-                            <span>Dashboard</span>
-                        </a>
-                    </li>
-                    <li class="active">
-                        <a href="#" class="dropdown-toggle">
-                            <i class="glyphicon glyphicon-user"></i>
-                            <span>Konsumen</span>
-                            <b class="arrow fa fa-angle-right"></b>
-                        </a>
-
-                        <!-- BEGIN Submenu -->
-                        <ul class="submenu">
-                            <li class="active"><a href="tkonsumen.html">Tabel Konsumen</a></li>
-                        </ul>
-                        <!-- END Submenu -->
-                    </li>
-                    <li>
-                        <a href="#" class="dropdown-toggle">
-                            <i class="fa fa-users"></i>
-                            <span>Karyawan</span>
-                            <b class="arrow fa fa-angle-right"></b>
-                        </a>
-
-                        <!-- BEGIN Submenu -->
-                        <ul class="submenu">
-                            <li><a href="karyawan.html">Isi Karyawan</a></li>
-                            <li><a href="tkaryawan.html">Tabel Karyawan</a></li>
-                        </ul>
-                        <!-- END Submenu -->
-                    </li>
-                    <li>
-                        <a href="#" class="dropdown-toggle">
-                            <i class="glyphicon glyphicon-list-alt"></i>
-                            <span>Bahan Baku</span>
-                            <b class="arrow fa fa-angle-right"></b>
-                        </a>
-
-                        <!-- BEGIN Submenu -->
-                        <ul class="submenu">
-                            <li><a href="bahan.html">Isi Bahan Baku</a></li>
-                            <li><a href="tbahan.html">Tabel Bahan Baku</a></li>
-                        </ul>
-                        <!-- END Submenu -->
-                    </li>
-                    <li>
-                        <a href="#" class="dropdown-toggle">
-                            <i class="glyphicon glyphicon-tasks"></i>
-                            <span>Kategori Bahan</span>
-                            <b class="arrow fa fa-angle-right"></b>
-                        </a>
-
-                        <!-- BEGIN Submenu -->
-                        <ul class="submenu">
-                            <li><a href="kategori.html">Isi Kategori Bahan</a></li>
-                            <li><a href="tkategori.html">Tabel Kategori Bahan</a></li>
-                        </ul>
-                        <!-- END Submenu -->
-                    </li>
-                    <li>
-                        <a href="#" class="dropdown-toggle">
-                            <i class="fa fa-tags"></i>
-                            <span>Ukuran</span>
-                            <b class="arrow fa fa-angle-right"></b>
-                        </a>
-
-                        <!-- BEGIN Submenu -->
-                        <ul class="submenu">
-                            <li><a href="ukuran.html">Isi Ukuran</a></li>
-                            <li><a href="tukuran.html">Tabel Ukuran</a></li>
-                        </ul>
-                        <!-- END Submenu -->
-                    </li>
-                </ul>
+                        <li>
+                            <a href="index.html">
+                                <i class="glyphicon glyphicon-home"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                                <a href="#" class="dropdown-toggle">
+                                    <i class="fa fa-archive"></i>
+                                    <span>Master</span>
+                                    <b class="arrow fa fa-angle-right"></b>
+                                </a>
+    
+                                <!-- BEGIN Submenu -->
+                                <ul class="submenu">
+                                    <li class="active">
+                                        <a href="tkonsumen.html">
+                                            <i class="glyphicon glyphicon-user"></i>
+                                            <span>Konsumen</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="tkaryawan.html">
+                                            <i class="fa fa-users"></i>
+                                            <span>Karyawan</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="tbahan.html">
+                                            <i class="glyphicon glyphicon-list-alt"></i>
+                                            <span>Bahan Baku</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="tkategori.html">
+                                            <i class="glyphicon glyphicon-tasks"></i>
+                                            <span>Kategori Bahan</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="tukuran.html">
+                                            <i class="fa fa-tags"></i>
+                                            <span>Ukuran</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                            <a href="tbank.html">
+                                                <i class="fa fa-credit-card"></i>
+                                                <span>Bank</span>
+                                            </a>
+                                    </li>
+                                    <li>
+                                        <a href="tsup.html">
+                                            <i class="fa fa-briefcase"></i>
+                                            <span>Supplier</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <!-- END Submenu -->
+                        </li>
+                        <li>
+                            <a href="tdatapesan.html">
+                                <i class="glyphicon glyphicon-user"></i>
+                                <span>Pemesanan</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="torder.html">
+                                <i class="fa fa-users"></i>
+                                <span>Order Desain</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="tproduksi.html">
+                                <i class="glyphicon glyphicon-list-alt"></i>
+                                <span>Produksi</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="ttransaksi.html">
+                                <i class="glyphicon glyphicon-tasks"></i>
+                                <span>Transaksi Gudang</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="tlaporan.html">
+                                <i class="fa fa-tags"></i>
+                                <span>Laporan Data</span>
+                            </a>
+                        </li>
+                    </ul>
                 <!-- END Navlist -->
 
                 <!-- BEGIN Sidebar Collapse Button -->
@@ -348,7 +308,7 @@
                                     <div class="form-group">
                                         <label class="col-sm-3 col-lg-2 control-label" for="nomor">Nomor Telepon</label>
                                         <div class="col-sm-6 col-lg-6 controls">
-                                            <input type="tel" name="nomor" id="nomor" class="form-control" data-rule-required="true" data-rule-minlength="3" />
+                                            <input type="number" name="nomor" id="nomor" class="form-control" data-rule-required="true" data-rule-minlength="3" />
                                         </div>
                                     </div>
                                     

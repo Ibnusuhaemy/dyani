@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Tabel Konsumen - Dyani Printing</title>
+        <title>Tabel Bank - Dyani Printing</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -174,7 +174,7 @@
                                 </a>
                                 <!-- BEGIN Submenu -->
                                 <ul class="submenu">
-                                    <li class="active">
+                                    <li>
                                         <a href="tkonsumen.html">
                                             <i class="glyphicon glyphicon-user"></i>
                                             <span>Konsumen</span>
@@ -204,7 +204,7 @@
                                             <span>Ukuran</span>
                                         </a>
                                     </li>
-                                    <li>
+                                    <li class="active">
                                             <a href="tbank.html">
                                                 <i class="fa fa-credit-card"></i>
                                                 <span>Bank</span>
@@ -265,7 +265,7 @@
                 <!-- BEGIN Page Title -->
                 <div class="page-title">
                     <div>
-                        <h1><i class="fa fa-file-o"></i> Tabel Konsumen</h1>
+                        <h1><i class="fa fa-file-o"></i> Tabel Bank</h1>
                     </div>
                 </div>
                 <!-- END Page Title -->
@@ -278,7 +278,7 @@
                             <a href="index.html">Home</a>
                             <span class="divider"><i class="fa fa-angle-right"></i></span>
                         </li>
-                        <li class="active">Tabel Konsumen</li>
+                        <li class="active">Tabel Bank</li>
                     </ul>
                 </div>
                 <!-- END Breadcrumb -->
@@ -288,32 +288,28 @@
                     <div class="col-md-12">
                         <div class="box">
                             <div class="box-title">
-                                <h3><i class="fa fa-table"></i> Data Konsumen</h3>
+                                <h3><i class="fa fa-table"></i> Data Bank</h3>
                             </div>
                             <div class="box-content">
-                              <a href="konsumen.html" class="btn btn-success"><i class="glyphicon glyphicon-plus-sign"></i> Tambah Data</a>
+                              <a href="bank.html" class="btn btn-success"><i class="glyphicon glyphicon-plus-sign"></i> Tambah Data</a>
                               <hr>
                               
                               <div class="table-responsive" style="border:0;">
                                   <table class="table table-advance" id="table1">
                                       <thead>
                                           <tr>
-                                             <th>ID Konsumen</th>
-                                             <th>Nama Konsumen</th>
-                                             <th>Alamat</th>
-                                             <th>Nomor Telepon</th>
+                                             <th>Nama Bank</th>
+                                             <th>Alias</th>
                                              <th>Manage</th>
                                           </tr>
                                       </thead>
                                       <tbody>
                                           <tr>
-                                              <td>1</td>
-                                              <td>Arif Budiman</td>
-                                              <td>Malang</td>
-                                              <td>0341</td>
+                                              <td>Bank Rakyat Indonesia</td>
+                                              <td>BRI</td>
                                               <td>
                                                   <a class="btn btn-success" href="#modaldetail" data-toggle="modal"><i class="fa fa-cog"></i> Detail</a>
-                                                  <a class="btn btn-success" href="ekonsumen.html"><i class="fa fa-external-link"></i> Edit</a>
+                                                  <a class="btn btn-success" href="ebank.html"><i class="fa fa-external-link"></i> Edit</a>
                                                   <button class="btn btn-success"><i class="fa fa-eraser"></i> Hapus</button>
                                               </td>
                                           </tr>
@@ -325,23 +321,18 @@
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h3 id="myModalLabel1">Detail Data Konsumen</h3>
+                                            <h3 id="myModalLabel1">Detail Data Bank</h3>
                                         </div>
                                         <div class="modal-body">
                                             <div class="form-horizontal">
                                                 <div class="form-group">
-                                                    <div class="col-sm-4 col-md-3">Nama: </div>
-                                                    <div class="col-sm-8 col-md-9">Arif Budiman Setyadi</div>
+                                                    <div class="col-sm-4 col-md-3">Nama Bank: </div>
+                                                    <div class="col-sm-8 col-md-9">Bank Rakyat Indonesi</div>
                                                 </div>
                                                 <hr/>
                                                 <div class="form-group">
-                                                    <div class="col-sm-4 col-md-3">Alamat: </div>
-                                                    <div class="col-sm-8 col-md-9">Jl. Klayatan Gang 3, RT.03, RW. 05, Sukun, Malang</div>
-                                                </div>
-                                                <hr/>
-                                                <div class="form-group">
-                                                    <div class="col-sm-4 col-md-3">Nomor Telepon: </div>
-                                                    <div class="col-sm-8 col-md-9">0826-7239-0977</div>
+                                                    <div class="col-sm-4 col-md-3">Alias: </div>
+                                                    <div class="col-sm-8 col-md-9">BRI</div>
                                                 </div>
                                             </div>
                                         </div>
