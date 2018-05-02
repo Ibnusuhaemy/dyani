@@ -160,64 +160,64 @@
                 <!-- BEGIN Navlist -->
                 <ul class="nav nav-list">
                         <li>
-                            <a href="index.html">
+                            <a href="dashboard.html">
                                 <i class="glyphicon glyphicon-home"></i>
                                 <span>Dashboard</span>
                             </a>
                         </li>
                         <li class="active">
-                                <a href="#" class="dropdown-toggle">
-                                    <i class="fa fa-archive"></i>
-                                    <span>Master</span>
-                                    <b class="arrow fa fa-angle-right"></b>
-                                </a>
+                            <a href="#" class="dropdown-toggle">
+                                <i class="fa fa-archive"></i>
+                                <span>Master</span>
+                                <b class="arrow fa fa-angle-right"></b>
+                            </a>
     
-                                <!-- BEGIN Submenu -->
-                                <ul class="submenu">
-                                    <li>
-                                        <a href="tkonsumen.html">
-                                            <i class="glyphicon glyphicon-user"></i>
-                                            <span>Konsumen</span>
+                            <!-- BEGIN Submenu -->
+                            <ul class="submenu">
+                                <li>
+                                    <a href="tkonsumen.html">
+                                        <i class="glyphicon glyphicon-user"></i>
+                                        <span>Konsumen</span>
+                                    </a>
+                                </li>
+                                <li class="active">
+                                    <a href="tkaryawan.html">
+                                        <i class="fa fa-users"></i>
+                                        <span>Karyawan</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="tbahan.html">
+                                        <i class="glyphicon glyphicon-list-alt"></i>
+                                        <span>Bahan Baku</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="tkategori.html">
+                                        <i class="glyphicon glyphicon-tasks"></i>
+                                        <span>Kategori Bahan</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="tukuran.html">
+                                        <i class="fa fa-tags"></i>
+                                        <span>Ukuran</span>
+                                    </a>
+                                </li>
+                                <li>
+                                        <a href="tbank.html">
+                                            <i class="fa fa-credit-card"></i>
+                                            <span>Bank</span>
                                         </a>
-                                    </li>
-                                    <li class="active">
-                                        <a href="tkaryawan.html">
-                                            <i class="fa fa-users"></i>
-                                            <span>Karyawan</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="tbahan.html">
-                                            <i class="glyphicon glyphicon-list-alt"></i>
-                                            <span>Bahan Baku</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="tkategori.html">
-                                            <i class="glyphicon glyphicon-tasks"></i>
-                                            <span>Kategori Bahan</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="tukuran.html">
-                                            <i class="fa fa-tags"></i>
-                                            <span>Ukuran</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                            <a href="tbank.html">
-                                                <i class="fa fa-credit-card"></i>
-                                                <span>Bank</span>
-                                            </a>
-                                    </li>
-                                    <li>
-                                        <a href="tsup.html">
-                                            <i class="fa fa-briefcase"></i>
-                                            <span>Supplier</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                                <!-- END Submenu -->
+                                </li>
+                                <li>
+                                    <a href="tsup.html">
+                                        <i class="fa fa-briefcase"></i>
+                                        <span>Supplier</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <!-- END Submenu -->
                         </li>
                         <li>
                             <a href="tdatapesan.html">
@@ -291,40 +291,40 @@
                                 <h3><i class="fa fa-bars"></i> Ubah Data Karyawan</h3>
                             </div>
                             <div class="box-content">
-                                    <form action="#" class="form-horizontal" id="validation-form" method="post">
-                                        <div class="form-group">
-                                            <label class="col-sm-3 col-lg-2 control-label" for="nama">Nama Karyawan</label>
-                                            <div class="col-sm-6 col-lg-4 controls">
-                                                <input type="text" name="nama" id="nama" class="form-control" data-rule-required="true" data-rule-minlength="3" />
+                                <form action="#" class="form-horizontal" id="validation-form" method="post">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 col-lg-2 control-label" for="nama">Nama Karyawan</label>
+                                        <div class="col-sm-6 col-lg-6 controls">
+                                            <input type="text" name="nama" id="nama" class="form-control" data-rule-required="true" data-rule-minlength="3" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                            <label class="col-sm-3 col-lg-2 control-label" for="alamat">Alamat</label>
+                                            <div class="col-sm-6 col-lg-6 controls">
+                                                <textarea name="alamat" id="alamat" class="form-control" rows="4" data-rule-required="true"></textarea>
                                             </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 col-lg-2 control-label" for="nomor">Nomor Telepon</label>
+                                        <div class="col-sm-6 col-lg-6 controls">
+                                            <input type="number" name="nomor" id="nomor" class="form-control" data-rule-required="true" data-rule-minlength="3" />
                                         </div>
-                                        <div class="form-group">
-                                                <label class="col-sm-3 col-lg-2 control-label" for="alamat">Alamat</label>
-                                                <div class="col-sm-6 col-lg-6 controls">
-                                                    <textarea name="alamat" id="alamat" class="form-control" rows="4" data-rule-required="true"></textarea>
-                                                </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 col-lg-2 control-label" for="posisi">Posisi</label>
+                                        <div class="col-sm-6 col-lg-6 controls">
+                                            <input type="text" name="posisi" id="posisi" class="form-control" data-rule-required="true" data-rule-minlength="3" />
                                         </div>
-                                        <div class="form-group">
-                                            <label class="col-sm-3 col-lg-2 control-label" for="nomor">Nomor Telepon</label>
-                                            <div class="col-sm-6 col-lg-4 controls">
-                                                <input type="number" name="nomor" id="nomor" class="form-control" data-rule-required="true" data-rule-minlength="3" />
-                                            </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2">
+                                            <input type="submit" class="btn btn-success" value="Submit">
+                                            <a class="btn" href="tkaryawan.html">Cancel</a>
                                         </div>
-                                        <div class="form-group">
-                                            <label class="col-sm-3 col-lg-2 control-label" for="posisi">Posisi</label>
-                                            <div class="col-sm-6 col-lg-4 controls">
-                                                <input type="text" name="posisi" id="posisi" class="form-control" data-rule-required="true" data-rule-minlength="3" />
-                                            </div>
-                                        </div>
-    
-                                        <div class="form-group">
-                                            <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2">
-                                                <input type="submit" class="btn btn-success" value="Submit">
-                                                <a class="btn" href="tkaryawan.html">Cancel</a>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>

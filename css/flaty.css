@@ -3106,7 +3106,7 @@ a.tile:hover {
     font-size: 14px;
 }
 .invoice-amount > p > span {
-    width: 60px;
+    width: 160px;
     display: inline-block;
 }
 
