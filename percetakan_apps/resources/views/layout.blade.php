@@ -79,7 +79,7 @@
                     <a data-toggle="dropdown" href="#" class="user-menu dropdown-toggle">
                         <img class="nav-user-photo" src="img/demo/avatar/avatar1.jpg" alt="Penny's Photo" />
                         <span class="hhh" id="user_info">
-                            Administrator
+                            {{ Auth::user()->name }}
                         </span>
                         <i class="fa fa-caret-down"></i>
                     </a>
@@ -139,10 +139,15 @@
                         <li class="divider"></li>
 
                         <li>
-                            <a href="{{ url('/login') }}">
-                                <i class="fa fa-off"></i>
+                            <a href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                         document.getElementById('logout-form').submit();">
                                 Logout
                             </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
                         </li>
                     </ul>
                     <!-- BEGIN User Dropdown -->
