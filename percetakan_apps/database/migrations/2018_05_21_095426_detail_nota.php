@@ -16,7 +16,7 @@ class DetailNota extends Migration
         Schema::create('detail_nota', function (Blueprint $table) {
             $table->increments('id');
             $table->integer("nota_id");
-            $table->string("jenis_pesanan", 25);
+            $table->integer("produk_id");
             $table->string("ukuran",30);
             $table->integer("jumlah");
             $table->integer("bahan_baku_id");

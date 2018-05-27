@@ -13,7 +13,16 @@ class BahanBaku extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('bahan_baku', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string("nama", 50);
+            $table->integer("qty");
+            $table->integer("harga_beli_satuan");
+            $table->integer("harga_jual_satuan");
+            $table->string("satuan", 10);
+            $table->softDeletes();
+            $table->timestamps();
+        });
     }
 
     /**

@@ -20,6 +20,7 @@
         <link rel="stylesheet" href="{{ asset('css/flaty-responsive.css') }}">
 
         <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}">
+        @yield('style')
     </head>
     <body>
 
@@ -224,7 +225,7 @@
                             <!-- END Submenu -->
                     </li>
                     <li>
-                        <a href="{{ url('/tdatapesan') }}">
+                        <a href="{{ url('/pemesanan') }}">
                             <i class="glyphicon glyphicon-user"></i>
                             <span>Pemesanan</span>
                         </a>

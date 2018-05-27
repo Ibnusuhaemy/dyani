@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Nota extends Migration
+class Produk extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,15 @@ class Nota extends Migration
      */
     public function up()
     {
-        Schema::create('nota', function (Blueprint $table) {
+        Schema::create('produk', function (Blueprint $table) {
             $table->increments('id');
-            $table->string("kode", 35);
-            $table->datetime("tgl_pesan");
-            $table->datetime("tgl_ambil");
-            $table->enum("waktu_ambil", ["siang", "sore", "malam"]);
-            $table->integer("created_by");
-            $table->integer("pelanggan_id");
+            $table->string('nama', 25);
+            $table->integer('harga_satuan');
+            $table->string('deskripsi', 100);
+            $table->integer('created_by');
             $table->timestamps();
             $table->softDeletes();
-
+            //
         });
     }
 
