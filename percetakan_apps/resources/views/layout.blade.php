@@ -78,7 +78,7 @@
                 <!-- BEGIN Button User -->
                 <li class="user-profile">
                     <a data-toggle="dropdown" href="#" class="user-menu dropdown-toggle">
-                        <img class="nav-user-photo" src="img/demo/avatar/avatar1.jpg" alt="Penny's Photo" />
+                    <img class="nav-user-photo" src="{{ asset("img/demo/avatar/avatar1.jpg") }}" alt="" />
                         <span class="hhh" id="user_info">
                             {{ Auth::user()->name }}
                         </span>

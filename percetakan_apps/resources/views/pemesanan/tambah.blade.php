@@ -180,7 +180,7 @@
 					</form>
 					</div>
 					<div class="tab-pane fade" id="profile1">
-					
+						<h1 class="text-center help-block">Buat Nota Terlebih Dahulu</h1>
 					</div>
 					
 					</div>

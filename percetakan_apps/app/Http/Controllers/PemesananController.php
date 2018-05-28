@@ -41,11 +41,12 @@ class PemesananController extends Controller
     }
 
     public function buatKodeNote($created_by){
-    	return "Nota-#".$created_by."_".substr(md5(uniqid(rand())), 3, 5).date("his:ymd");
+    	return "Nota#".$created_by."_".substr(md5(uniqid(rand())), 3, 5).date("his_ymd");
     }
 
     function detail($nota_id){
-    	$nota = Nota::find($nota_id);
+		$nota = Nota::find($nota_id);
+		// dd($nota->pelanggan->nama);
     	return view("pemesanan.detail", compact('nota'));
     }
 }

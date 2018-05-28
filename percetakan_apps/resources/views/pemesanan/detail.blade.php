@@ -27,7 +27,7 @@
     <div class="col-md-12">
         <div class="box">
             <div class="box-title">
-                <h3><i class="fa fa-table"></i> Nota </h3> <h3 id="total_harga" class="pull-right">Rp. 0</h3>
+                <h3><i class="fa fa-table"></i> {{$nota->kode}} </h3> <h3 id="total_harga" class="pull-right">Rp. 0</h3>
             </div>
 			  
 			   <div class="box-content">
@@ -40,7 +40,7 @@
 
 					<div id="myTabContent1" class="tab-content">
 					<div class="tab-pane fade active in" id="nota">
-						<form action="{{ url("/pemesanan") }}" class="form-horizontal" id="validation-form" method="post">
+						<form action="{{ url("/pemesanan/update") }}" class="form-horizontal" id="validation-form" method="post">
 							{{ csrf_field() }}
 						{{-- <div class="form-group">
 							<label class="col-sm-3 col-lg-2 control-label" for="username">No Pesanan:</label>
@@ -51,38 +51,38 @@
 						<div class="form-group">
 							<label class="col-sm-3 col-lg-2 control-label" for="konsumen">Nama Konsumen:</label>
 							<div class="col-sm-6 col-lg-4 controls">
-								<input type="text" name="nama" id="konsumen" class="form-control" data-rule-required="true" data-rule-minlength="3" />
+							<input type="text" name="nama" id="konsumen" class="form-control" value="{{$nota->pelanggan->nama}}" data-rule-required="true" data-rule-minlength="3" disabled/>
 							</div>
 							<span class="col-sm-3"><i class="fa fa-users"></i> <a href="#">Cari dari Pelanggan</a></span>
 						</div>
 						<div class="form-group">
 							<label class="col-sm-3 col-lg-2 control-label" for="nama">No Telp Konsumen:</label>
 							<div class="col-sm-6 col-lg-4 controls">
-								<input type="number" name="telp" id="nama" class="form-control" data-rule-required="true" data-rule-minlength="4" />
+								<input type="number" name="telp" id="nama" class="form-control" data-rule-required="true" data-rule-minlength="4"  value="{{$nota->pelanggan->telp}}" disabled/>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-sm-3 col-lg-2 control-label" for="nama">Email:</label>
 							<div class="col-sm-6 col-lg-4 controls">
-								<input type="email" name="email" id="email" class="form-control" data-rule-required="true" data-rule-minlength="4" />
+								<input type="email" name="email" id="email" class="form-control" data-rule-required="true" data-rule-minlength="4"  value="{{$nota->pelanggan->email}}" disabled/>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-sm-3 col-lg-2 control-label" for="nama">Alamat:</label>
 							<div class="col-sm-6 col-lg-4 controls">
-								<textarea name="alamat" id="" cols="30" rows="3" class="form-control"></textarea>
+								<textarea name="alamat" id="" cols="30" rows="3" disabled class="form-control">{{$nota->pelanggan->alamat}}" </textarea>
 							</div>
 						</div>
 						 <div class="form-group">
 						  <label class="col-sm-3 col-lg-2 control-label">Tanggal Pesan:</label>
 						  <div class="col-sm-6 col-lg-4 controls">
-							 <input class="form-control date-picker" id="dp1" size="16" type="date" value={{ date("Y-m-d") }} readonly="" name="tgl_pesan" />
+							 <input class="form-control date-picker" id="dp1" size="16" type="date"  value="{{$nota->tgl_pesan}}"  readonly="" name="tgl_pesan" />
 						  </div>
 						</div>
 						<div class="form-group">
 						  <label class="col-sm-3 col-lg-2 control-label">Tanggal Selesai:</label>
 						  <div class="col-sm-6 col-lg-4 controls">
-							 <input class="form-control date-picker" id="dp1" size="16" type="date" value="{{ date("Y-m-d") }}" readonly="" name="tgl_ambil" />
+							 <input class="form-control date-picker" id="dp1" size="16" type="date"  value="{{$nota->tgl_ambil}}" readonly="" name="tgl_ambil" />
 							 <span class="help-inline">Dihitung otomatis berdasarkan item pesanan</span>
 						  </div>
 						</div>
@@ -90,9 +90,9 @@
 							  <label class="col-sm-3 col-lg-2 control-label">Waktu Ambil:</label>
 							  <div class="col-sm-6 col-lg-4 controls">
 							  	<select name="waktu_ambil" id="" class="form-control">
-							  		<option value="siang">Siang</option>
-							  		<option value="sore">Sore</option>
-							  		<option value="malam">Malam</option>
+							  		<option value="siang" @if($nota->waktu_ambil == 'siang') selected @endif>Siang</option>
+							  		<option value="sore" @if($nota->waktu_ambil == 'sore') selected @endif>Sore</option>
+							  		<option value="malam" @if($nota->waktu_ambil == 'malam') selected @endif>Malam</option>
 							  	</select>
 								 {{-- <div class="input-group">
 									<a class="input-group-addon" href="#"><i class="fa fa-clock-o"></i></a>
@@ -173,14 +173,16 @@
 					   </div> --}}
 						<div class="form-group">
 							<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2">
-								<input type="submit" class="btn btn-success" value="Simpan">
+								<input type="submit" class="btn btn-success" value="Update">
 								<a class="btn" href="tdatapesan.html">Cancel</a>
 							</div>
 						</div>
 					</form>
 					</div>
 					<div class="tab-pane fade" id="profile1">
-					
+						@if()
+						@else
+						@endif
 					</div>
 					
 					</div>
