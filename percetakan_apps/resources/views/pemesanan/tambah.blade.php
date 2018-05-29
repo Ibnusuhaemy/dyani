@@ -31,6 +31,20 @@
             </div>
 			  
 			   <div class="box-content">
+			   	<div class="btn-toolbar pull-right">
+				<div class="btn-group">
+				<button disabled="" class="btn btn-circle btn-bordered btn-fill btn-to-success show-tooltip" title="" href="#" data-original-title="Tambah Item Pesanan"><i class="fa fa-plus"></i></button>
+				<button disabled="" class="btn btn-circle btn-bordered btn-fill btn-to-warning show-tooltip" title="" href="#" data-original-title="Pembayaran"><i class="fa fa-money"></i></button>
+				<button disabled="" class="btn btn-circle btn-bordered btn-fill btn-to-info show-tooltip" title="" href="#" data-original-title="Print"><i class="fa fa-print"></i></button>
+				</div>
+				{{-- <div class="btn-group">
+					<a class="btn btn-circle btn-bordered btn-fill btn-to-danger btn-danger show-tooltip" title="" href="#" data-original-title="Delete selected"><i class="fa fa-trash-o"></i></a>
+				
+				</div>
+				<div class="btn-group">
+				<a class="btn btn-circle btn-bordered btn-fill btn-to-lime show-tooltip" title="" href="#" data-original-title="Refresh"><i class="fa fa-repeat"></i></a>
+				</div> --}}
+				</div>
 			   	<div class="tabbable">
 					<ul id="myTab1" class="nav nav-tabs">
 						<li class="active"><a href="#nota" data-toggle="tab"><i class="fa fa-shopping-cart"></i> Nota</a></li>
@@ -180,13 +194,39 @@
 					</form>
 					</div>
 					<div class="tab-pane fade" id="profile1">
-						<h1 class="text-center help-block">Buat Nota Terlebih Dahulu</h1>
+						<table class="table table-advance">
+						<thead>
+						<tr>
+						<th style="width:18px"><input disabled="" type="checkbox"></th>
+						<th style="width: 25%">Jenis Pesanan</th>
+						<th style="width: 15%">Harga (Rp.)</th>
+						<th style="width: 25%">Bahan</th>
+						<th style="width: 20%">Ukuran</th>
+						<th style="width: 15%">Jumlah</th>
+{{-- 						<th>Desain</th>
+						<th>Finishing</th>
+						<th>Catatan</th> --}}
+						
+						{{-- <th>Detail</th> --}}
+						<th>Opsi</th>
+						</tr>
+						</thead>
+						<tbody>
+						
+						<tr>
+							<td colspan="7">
+								<h3 class="text-center help-text">Kosong</h3>
+							</td>
+						</tr>
+						</tbody>
+						</table>
+						<button class="btn btn-success" disabled="">Simpan</button>
 					</div>
 					
 					</div>
 
 					</div>
-					<a href="#" class="btn btn-info text-center">Cetak</a>
+					{{-- <a href="#" class="btn btn-info text-center">Cetak</a> --}}
 			   </div>
              
               

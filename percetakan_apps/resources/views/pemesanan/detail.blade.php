@@ -31,10 +31,25 @@
             </div>
 			  
 			   <div class="box-content">
+			   	<div class="btn-toolbar pull-right">
+				<div class="btn-group">
+				<a class="btn btn-circle btn-bordered btn-fill btn-to-success show-tooltip" title="" href="#" data-original-title="Tambah Item Pesanan" data-toggle="modal" data-target="#tambah_pesanan"><i class="fa fa-plus"></i></a>
+				<a class="btn btn-circle btn-bordered btn-fill btn-to-warning show-tooltip" title="" href="#" data-original-title="Pembayaran"><i class="fa fa-money"></i></a>
+				<a class="btn btn-circle btn-bordered btn-fill btn-to-info show-tooltip" title="" href="#" data-original-title="Print"><i class="fa fa-print"></i></a>
+				</div>
+				{{-- <div class="btn-group">
+					<a class="btn btn-circle btn-bordered btn-fill btn-to-danger btn-danger show-tooltip" title="" href="#" data-original-title="Delete selected"><i class="fa fa-trash-o"></i></a>
+				
+				</div>
+				<div class="btn-group">
+				<a class="btn btn-circle btn-bordered btn-fill btn-to-lime show-tooltip" title="" href="#" data-original-title="Refresh"><i class="fa fa-repeat"></i></a>
+				</div> --}}
+				</div>
 			   	<div class="tabbable">
 					<ul id="myTab1" class="nav nav-tabs">
 						<li class="active"><a href="#nota" data-toggle="tab"><i class="fa fa-shopping-cart"></i> Nota</a></li>
-						<li class=""><a href="#profile1" data-toggle="tab"><i class="fa fa-tasks"></i> Item pesanan</a></li>
+						<li class=""><a href="#item" data-toggle="tab"><i class="fa fa-tasks"></i> Item pesanan</a></li>
+						{{-- <li class=""><a href="#pembayaran" data-toggle="tab"><i class="fa fa-money"></i> Pembayaran</a></li> --}}
 						
 					</ul>
 
@@ -53,7 +68,7 @@
 							<div class="col-sm-6 col-lg-4 controls">
 							<input type="text" name="nama" id="konsumen" class="form-control" value="{{$nota->pelanggan->nama}}" data-rule-required="true" data-rule-minlength="3" disabled/>
 							</div>
-							<span class="col-sm-3"><i class="fa fa-users"></i> <a href="#">Cari dari Pelanggan</a></span>
+							{{-- <span class="col-sm-3"><i class="fa fa-users"></i> <a href="#">Cari dari Pelanggan</a></span> --}}
 						</div>
 						<div class="form-group">
 							<label class="col-sm-3 col-lg-2 control-label" for="nama">No Telp Konsumen:</label>
@@ -70,7 +85,7 @@
 						<div class="form-group">
 							<label class="col-sm-3 col-lg-2 control-label" for="nama">Alamat:</label>
 							<div class="col-sm-6 col-lg-4 controls">
-								<textarea name="alamat" id="" cols="30" rows="3" disabled class="form-control">{{$nota->pelanggan->alamat}}" </textarea>
+								<textarea name="alamat" id="" cols="30" rows="3" disabled class="form-control">{{$nota->pelanggan->alamat}} </textarea>
 							</div>
 						</div>
 						 <div class="form-group">
@@ -179,19 +194,138 @@
 						</div>
 					</form>
 					</div>
-					<div class="tab-pane fade" id="profile1">
-						@if()
-						@else
+					<div class="tab-pane fade" id="item">
+						<table class="table table-advance">
+						<thead>
+						<tr>
+						<th style="width:18px"><input type="checkbox"></th>
+						<th style="width: 20%">Jenis Pesanan</th>
+						<th style="width: 15%">Harga (Rp.)</th>
+						<th style="width: 23%">Bahan</th>
+						<th style="width: 25%">Ukuran</th>
+						<th style="width: 12%">Jumlah</th>
+{{-- 						<th>Desain</th>
+						<th>Finishing</th>
+						<th>Catatan</th> --}}
+						
+						{{-- <th>Detail</th> --}}
+						<th style="width: 5%">Opsi</th>
+						</tr>
+						</thead>
+						<tbody>
+							@foreach($detail_nota as $detail_nota)
+							<tr class="table-flag-blue">
+							<td><input type="checkbox"></td>
+							<td>{{ ucfirst($detail_nota->produk->nama) }}</td>
+							<td>{{ number_format($detail_nota->produk->harga_satuan) }} /{{ $detail_nota->produk->satuan }}</td>
+							<td>
+								<select name="bahan_baku" id="" class="form-control">
+									<option value="-1">Default</option>
+									@foreach($bahan_baku as $bahan)
+										<option value="{{ $bahan->id }}">{{ ucfirst($bahan->nama) }}</option>
+									@endforeach
+								</select>
+							</td>
+							<td><input type="text" class="form-control" name="ukuran" placeholder="Ukuran" required=""></td>
+							<td><input type="number" min="1" name="jumlah" placeholder="Jumlah" class="form-control" required="">
+							
+							<td>
+								<div class="btn-group"> <button type="button" class="btn btn-circle btn-bordered btn-fill dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-ellipsis-h"></i></button> <ul class="dropdown-menu dropdown-menu-right"> 
+									<li><a href="#">Upload File</a></li>
+									<li><a href="#">Proses Desain</a></li>
+									<li><a href="#">Finishing</a></li>
+									<li><a href="#">Catatan Lain</a></li>
+									<li role="separator" class="divider"></li>
+									<li><a href="#">Hapus</a></li>
+								</ul> </div>
+							</td>
+							</tr>	
+							@endforeach
+						
+						@if(sizeof($detail_nota)==0)
+						<tr>
+							<td colspan="7">
+								<h3 class="text-center help-text">Kosong</h3>
+							</td>
+						</tr>
 						@endif
+						
+						</tbody>
+						</table>
+						<button class="btn btn-success">Simpan</button>
+						{{-- <a href="" class="btn btn-success">Tambah</a> --}}
 					</div>
+					{{-- <div class="tab-pane fade" id="pembayaran">
+					</div> --}}
 					
 					</div>
 
 					</div>
-					<a href="#" class="btn btn-info text-center">Cetak</a>
+					{{-- <a href="#" class="btn btn-info text-center">Cetak</a> --}}
 			   </div>
              
               
+        </div>
+    </div>
+</div>
+
+@endsection
+
+@section("modal")
+
+<div id="tambah_pesanan" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="myModalLabel1">Katalog Produk</h3>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+					<table  class="table table-advance">
+						<thead>
+							<tr>
+								<th><input type="checkbox"></th>
+								<th>Nama</th>
+								<th>Harga Satuan(Rp.)</th>
+								<th>Satuan</th>
+								<th>Pilih</th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach($produk as $produk)
+							<tr>
+								<td>
+									<input type="checkbox">
+								</td>
+								<td>
+									{{$produk->nama}}
+								</td>
+								<td>
+									{{$produk->harga_satuan}}
+								</td>
+								<td>
+									{{$produk->satuan}}
+								</td>
+								<td>
+									<form action="{{ url("/tambah-item") }}" method="post">
+										{{ csrf_field() }}
+										<input type="hidden" name="produk_id" value="{{$produk->id}}">
+										<input type="hidden" name="nota_id" value="{{$nota->id}}">
+										<button class="btn btn-success"><i class="fa fa-plus"></i> Tambah</button>
+									</form>
+									
+								</td>
+							</tr>
+							@endforeach
+							
+						</tbody>
+					</table>                    
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                <button class="btn btn-success" data-dismiss="modal" aria-hidden="true">Tambahkan (<span id="total_pilih">0</span> Produk)</button>
+            </div>
         </div>
     </div>
 </div>

@@ -46,7 +46,19 @@ class PemesananController extends Controller
 
     function detail($nota_id){
 		$nota = Nota::find($nota_id);
-		// dd($nota->pelanggan->nama);
-    	return view("pemesanan.detail", compact('nota'));
+		$produk = Produk::all();
+        $bahan_baku = Bahan_baku::orderBy("nama")->get();
+        $detail_nota = Detail_nota::with('produk', 'bahan_baku')->where("nota_id", $nota_id)->get();
+        // dd($detail_nota);
+    	return view("pemesanan.detail", compact('nota', 'produk', 'bahan_baku', 'detail_nota'));
+    }
+
+    function tambahItem(Request $request){
+        $detail_nota = new Detail_nota;
+        $detail_nota->nota_id = $request->nota_id;
+        $detail_nota->produk_id = $request->produk_id;
+        $detail_nota->save();
+
+        return redirect("/pemesanan/".$request->nota_id);
     }
 }
