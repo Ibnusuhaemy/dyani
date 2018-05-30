@@ -8,11 +8,13 @@ use App\Pelanggan;
 use App\Detail_nota;
 use App\Bahan_baku;
 use App\Produk;
+use Illuminate\Support\Facades\Auth;
 
 class PemesananController extends Controller
 {
     public function index(){
-    	return view("pemesanan.index");
+        $nota = Nota::where("created_by", Auth::id())->get();
+    	return view("pemesanan.index", compact('nota'));
     }
 
     public function add(){
@@ -49,7 +51,21 @@ class PemesananController extends Controller
 		$produk = Produk::all();
         $bahan_baku = Bahan_baku::orderBy("nama")->get();
         $detail_nota = Detail_nota::with('produk', 'bahan_baku')->where("nota_id", $nota_id)->get();
-        // dd($detail_nota);
+        $cek_detail_nota = array();
+
+        foreach ($detail_nota as $details) {
+            $cek_detail_nota[] = $details->produk_id;
+        }
+        // dd($cek_detail_nota);
+        $produk = $produk->each(function($item, $key) use($cek_detail_nota){
+            // produk yg tidak ada di detail_nota:$item->id
+            if (in_array($item->id, $cek_detail_nota, true)) {
+                $item->selected = true;
+            }
+            
+        });
+
+        // dd($produk);
     	return view("pemesanan.detail", compact('nota', 'produk', 'bahan_baku', 'detail_nota'));
     }
 
@@ -60,5 +76,18 @@ class PemesananController extends Controller
         $detail_nota->save();
 
         return redirect("/pemesanan/".$request->nota_id);
+    }
+
+    function updateItem(Request $request){
+
+        for ($i=0; $i < sizeof($request->id) ; $i++) { 
+            Detail_nota::where("id", $request->id[$i])->update([
+                "bahan_baku_id" => $request->bahan_baku[$i],
+                "ukuran" => $request->ukuran[$i],
+                "jumlah" => $request->jumlah[$i],
+                "harga" => $request->total_harga[$i],
+            ]);
+        }
+        return redirect()->back();
     }
 }

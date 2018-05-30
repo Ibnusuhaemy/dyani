@@ -20,3 +20,4 @@ Route::get('/pemesanan/tambah', 'PemesananController@add');
 Route::post('/pemesanan', 'PemesananController@buatNota');
 Route::get('/pemesanan/{nota_id}', 'PemesananController@detail');
 Route::post('/tambah-item', 'PemesananController@tambahItem');
+Route::post('/update-item', 'PemesananController@updateItem');

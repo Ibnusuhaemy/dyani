@@ -1,5 +1,5 @@
-@extends("layout")
 
+@extends("layout")
 @section("content")
 
 <div class="page-title">
@@ -27,7 +27,7 @@
     <div class="col-md-12">
         <div class="box">
             <div class="box-title">
-                <h3><i class="fa fa-table"></i> {{$nota->kode}} </h3> <h3 id="total_harga" class="pull-right">Rp. 0</h3>
+                <h3><i class="fa fa-table"></i> {{$nota->kode}} </h3> <h3 class="pull-right">Rp. <span id="total_harga">0</span></h3>
             </div>
 			  
 			   <div class="box-content">
@@ -195,15 +195,18 @@
 					</form>
 					</div>
 					<div class="tab-pane fade" id="item">
+						<form action="{{ url("/update-item") }}" method="post">
+							{{ csrf_field() }}
+							<input type="hidden" name="nota_id" value="{{ $nota->id }}">
 						<table class="table table-advance">
 						<thead>
 						<tr>
 						<th style="width:18px"><input type="checkbox"></th>
-						<th style="width: 20%">Jenis Pesanan</th>
-						<th style="width: 15%">Harga (Rp.)</th>
-						<th style="width: 23%">Bahan</th>
-						<th style="width: 25%">Ukuran</th>
-						<th style="width: 12%">Jumlah</th>
+						<th style="width: 25%">Jenis Pesanan</th>
+						<th style="width: 18%">Bahan</th>
+						<th style="width: 22%">Ukuran</th>
+						<th style="width: 10%">Jumlah</th>
+						<th style="width: 18%">Total Harga</th>
 {{-- 						<th>Desain</th>
 						<th>Finishing</th>
 						<th>Catatan</th> --}}
@@ -216,19 +219,24 @@
 							@foreach($detail_nota as $detail_nota)
 							<tr class="table-flag-blue">
 							<td><input type="checkbox"></td>
-							<td>{{ ucfirst($detail_nota->produk->nama) }}</td>
-							<td>{{ number_format($detail_nota->produk->harga_satuan) }} /{{ $detail_nota->produk->satuan }}</td>
+							<td><strong>{{ ucfirst($detail_nota->produk->nama) }}</strong> ({{ number_format($detail_nota->produk->harga_satuan) }} /{{ $detail_nota->produk->satuan }})
+							</td>
 							<td>
-								<select name="bahan_baku" id="" class="form-control">
+								<select name="bahan_baku[]" id="" class="form-control">
 									<option value="-1">Default</option>
 									@foreach($bahan_baku as $bahan)
-										<option value="{{ $bahan->id }}">{{ ucfirst($bahan->nama) }}</option>
+										<option value="{{ $bahan->id }}" @if($detail_nota->bahan_baku_id == $bahan->id) selected="" @endif>{{ ucfirst($bahan->nama) }}</option>
 									@endforeach
 								</select>
 							</td>
-							<td><input type="text" class="form-control" name="ukuran" placeholder="Ukuran" required=""></td>
-							<td><input type="number" min="1" name="jumlah" placeholder="Jumlah" class="form-control" required="">
-							
+							<td><input type="text" class="form-control" name="ukuran[]" placeholder="Ukuran" required="" value="{{ $detail_nota->ukuran }}">
+
+							</td>
+							<td><input type="number" min="1" name="jumlah[]" placeholder="Jumlah" class="form-control" required="" value="{{ $detail_nota->jumlah }}">
+							</td>
+							<td><input type="number" min="1" name="total_harga[]" placeholder="Rp." class="form-control harga_item" required="" value="{{ $detail_nota->harga }}">
+								<input type="hidden" name="id[]" value="{{ $detail_nota->id }}">
+							</td>
 							<td>
 								<div class="btn-group"> <button type="button" class="btn btn-circle btn-bordered btn-fill dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-ellipsis-h"></i></button> <ul class="dropdown-menu dropdown-menu-right"> 
 									<li><a href="#">Upload File</a></li>
@@ -241,6 +249,7 @@
 							</td>
 							</tr>	
 							@endforeach
+
 						
 						@if(sizeof($detail_nota)==0)
 						<tr>
@@ -253,6 +262,7 @@
 						</tbody>
 						</table>
 						<button class="btn btn-success">Simpan</button>
+						</form>
 						{{-- <a href="" class="btn btn-success">Tambah</a> --}}
 					</div>
 					{{-- <div class="tab-pane fade" id="pembayaran">
@@ -287,7 +297,6 @@
 								<th><input type="checkbox"></th>
 								<th>Nama</th>
 								<th>Harga Satuan(Rp.)</th>
-								<th>Satuan</th>
 								<th>Pilih</th>
 							</tr>
 						</thead>
@@ -295,24 +304,27 @@
 							@foreach($produk as $produk)
 							<tr>
 								<td>
-									<input type="checkbox">
+									<input type="checkbox" @if(isset($produk->selected)) disabled="" @endif>
 								</td>
 								<td>
-									{{$produk->nama}}
+									{{ucfirst($produk->nama)}}
 								</td>
 								<td>
-									{{$produk->harga_satuan}}
-								</td>
-								<td>
+									{{number_format($produk->harga_satuan)}} /
 									{{$produk->satuan}}
 								</td>
 								<td>
+									@if(isset($produk->selected))
+									<button class="btn" disabled="">Selected</button>
+									@else
 									<form action="{{ url("/tambah-item") }}" method="post">
 										{{ csrf_field() }}
 										<input type="hidden" name="produk_id" value="{{$produk->id}}">
 										<input type="hidden" name="nota_id" value="{{$nota->id}}">
 										<button class="btn btn-success"><i class="fa fa-plus"></i> Tambah</button>
 									</form>
+									@endif
+									
 									
 								</td>
 							</tr>
@@ -329,5 +341,20 @@
         </div>
     </div>
 </div>
+
+@endsection
+
+@section("script")
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		var sum = 0;
+		$(".harga_item").each(function(){
+			sum = parseInt($(this).val())+sum;
+		});
+		// sum = new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(sum);
+		$("#total_harga").text(new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(sum));
+	});
+</script>
 
 @endsection

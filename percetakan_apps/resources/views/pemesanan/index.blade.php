@@ -36,29 +36,36 @@
                                   <table class="table table-advance" id="table1">
                                       <thead>
                                           <tr>
-                                             <th>ID</th>
-                                             <th>No Pesanan</th>
-											 <th>Nama Konsumen</th>
-											 <th>Tanggal Pesan</th>
-											 <th>Status Desain</th>
-											 <th>Manage</th>
+                                             <th>#</th>
+                                             <th>Nota</th>
+                      											 <th>Nama Konsumen</th>
+                                             <th>Tanggal Pesan</th>
+                      											 <th>Tanggal Ambil</th>
+                      											 <th>Status</th>
+                      											 <th>Manage</th>
                                           </tr>
                                       </thead>
                                       <tbody>
-                                          <tr>
-                                              <td>1</td>
-                                              <td>31</td>
-                                              <td>Ryansyah</td>
-											  <td>22042018</td>
-											  <td>Langsung Proses Cetak</td>
-											  
-                                              <td>
-                                                  <a class="btn btn-success" href="#modaldetail" data-toggle="modal"><i class="fa fa-cog"></i> Detail</a>
-                                                  <a class="btn btn-success" href="edatapesan.html"><i class="fa fa-external-link"></i> Edit</a>
-                                                  <button class="btn btn-success"><i class="fa fa-eraser"></i> Hapus</button>
-                                                  <a class="btn btn-success" href="invoice_order.html"><i class="fa fa-print"></i> Cetak</a>
-                                              </td>
+                                        @php
+                                        $i= 1;
+                                        @endphp
+                                        @foreach($nota as $nota)
+                                        <tr>
+                                          <td>{{ $i++ }}</td>
+                                          <td><a href="{{ url("/pemesanan/".$nota->id) }}">{{ $nota->kode }}</a></td>
+                                          <td><strong>{{ $nota->pelanggan->nama }}</strong></td>
+                                          <td>{{ $nota->tgl_pesan }}</td>
+                                          <td>{{ $nota->tgl_ambil }} {{ $nota->waktu_ambil }}</td>
+                                          <td> - </td>                    
+                                          <td>
+                                              <a class="btn btn-success" href="{{ url("/pemesanan/".$nota->id) }}"><i class="fa fa-cog"></i> Detail</a>
+                                              {{-- <a class="btn btn-success" href="edatapesan.html"><i class="fa fa-external-link"></i> Edit</a> --}}
+                                              <a class="btn btn-danger" href=""><i class="fa fa-eraser"></i> Hapus</a>
+                                              <a class="btn btn-success" href=""><i class="fa fa-print"></i> Cetak</a>
+                                          </td>
                                           </tr>
+                                        @endforeach
+                                          
                                       </tbody>
                                   </table>
                               </div>
