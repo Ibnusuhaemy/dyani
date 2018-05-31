@@ -133,13 +133,13 @@
 						<div class="form-group">
 							<label class="col-sm-3 col-lg-3 control-label" for="bay">Jumlah Bayar:</label>
 							<div class="col-sm-6 col-lg-6 controls">
-								<input type="text" name="bay" id="bay" class="form-control" data-rule-required="true" data-rule-minlength="3" />
+								<input type="text" name="bay" id="bay" class="form-control" data-rule-required="true" data-rule-minlength="3" disabled="" placeholder="0" />
 							</div>
 						</div>
 						<div class="form-group">
 						  <label class="col-sm-3 col-lg-3 control-label">Kekurangan Bayar</label>
 						  <div class="col-sm-6 col-lg-6 controls">
-							 <input class="form-control" type="text" placeholder="Disabled input here..." disabled />
+							 <input class="form-control" type="text" placeholder="0" disabled />
 						  </div>
 						</div>
 						</div>
