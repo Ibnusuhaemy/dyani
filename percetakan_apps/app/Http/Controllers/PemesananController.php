@@ -35,6 +35,8 @@ class PemesananController extends Controller
     	$nota->kode = $this->buatKodeNote($request->user()->id);
     	$nota->tgl_pesan = $request->tgl_pesan;
     	$nota->tgl_ambil = $request->tgl_ambil;
+        $nota->transaksi = $request->transaksi;
+        $nota->bayar = $request->bayar;
     	$nota->created_by = $request->user()->id;
     	$nota->pelanggan_id = $pelanggan->id;
     	$nota->save();
@@ -44,6 +46,14 @@ class PemesananController extends Controller
 
     public function buatKodeNote($created_by){
     	return "Nota#".$created_by."_".substr(md5(uniqid(rand())), 3, 5).date("his_ymd");
+    }
+
+    function editNota(Request $request){
+        $nota = Nota::findOrFail($request->id);
+        $nota->waktu_ambil = $request->waktu_ambil;
+        $nota->bayar = $request->bayar;
+        $nota->save();
+        return redirect()->back();
     }
 
     function detail($nota_id){
