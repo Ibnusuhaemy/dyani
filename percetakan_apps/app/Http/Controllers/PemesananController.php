@@ -9,6 +9,7 @@ use App\Detail_nota;
 use App\Bahan_baku;
 use App\Produk;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PemesananController extends Controller
 {
@@ -98,6 +99,21 @@ class PemesananController extends Controller
                 "harga" => $request->total_harga[$i],
             ]);
         }
+        return redirect()->back();
+    }
+
+    function uploadFile(Request $request){
+
+        $this->validate($request, [
+            'file_desain'=> 'image|max:2000'
+        ]);
+
+        $file_desain = $request->file("file_desain")->store("public/file_desain");
+
+        $detail_nota = Detail_nota::find($request->detail_nota_id);
+        $detail_nota->file_desain = $file_desain;
+        $detail_nota->save();
+        Storage::delete($request->file_lama);
         return redirect()->back();
     }
 }

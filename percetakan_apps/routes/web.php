@@ -22,3 +22,4 @@ Route::post('/pemesanan/update', 'PemesananController@editNota');
 Route::get('/pemesanan/{nota_id}', 'PemesananController@detail');
 Route::post('/tambah-item', 'PemesananController@tambahItem');
 Route::post('/update-item', 'PemesananController@updateItem');
+Route::post('/upload-file', 'PemesananController@uploadFile');

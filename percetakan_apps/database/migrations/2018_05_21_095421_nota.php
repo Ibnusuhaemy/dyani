@@ -20,7 +20,7 @@ class Nota extends Migration
             $table->datetime("tgl_ambil");
             $table->enum("waktu_ambil", ["siang", "sore", "malam"]);
             $table->enum("transaksi", ["cash", "DP", "transfer bank"]);
-            $table->integer("bayar");
+            $table->integer("bayar")->nullable();
             $table->integer("created_by");
             $table->integer("pelanggan_id");
             $table->timestamps();

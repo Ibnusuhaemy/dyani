@@ -198,10 +198,10 @@
 							</td>
 							<td>
 								<div class="btn-group"> <button type="button" class="btn btn-circle btn-bordered btn-fill dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-ellipsis-h"></i></button> <ul class="dropdown-menu dropdown-menu-right"> 
-									<li><a href="#">Upload File</a></li>
-									<li><a href="#">Proses Desain</a></li>
-									<li><a href="#">Finishing</a></li>
-									<li><a href="#">Catatan Lain</a></li>
+									<li><a href="#" data-toggle="modal" data-target="#upload_file" data-file-lama="{{ $detail_nota->file_desain }}" data-item-id="{{ $detail_nota->id }}" >Upload File</a></li>
+									<li><a href="#" data-toggle="modal" data-target="#" data-item-id={{ $detail_nota->id }}>Proses Desain</a></li>
+									<li><a href="#" data-toggle="modal" data-target="#" data-item-id={{ $detail_nota->id }}>Finishing</a></li>
+									<li><a href="#" data-toggle="modal" data-target="#" data-item-id={{ $detail_nota->id }}>Catatan Lain</a></li>
 									<li role="separator" class="divider"></li>
 									<li><a href="#">Hapus</a></li>
 								</ul> </div>
@@ -301,25 +301,81 @@
     </div>
 </div>
 
+<div id="upload_file" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+			<form action="{{ url("/upload-file") }}" method="post" enctype="multipart/form-data">
+				{{ csrf_field() }}
+	            <input type="hidden" name="detail_nota_id" value="">
+	            <input type="hidden" name="nota_id" value="{{ $nota->id }}">
+	            <input type="hidden" name="file_lama" value="">
+	            <div class="modal-header">
+	                <h3 id="myModalLabel1">Upload File</h3>
+	            </div>
+	            <div class="modal-body">
+	                <div class="form-horizontal">
+						<div class="form-group">
+									<div class="col-sm-12 col-lg-12 controls">
+										<input type="file" name="file_desain" class="form-control" />
+										<span class="help-inline">Format: .jpg .png | Ukuran file: maksimal 2MB</span>
+									</div>
+								</div>
+	                </div>
+	            </div>
+	            <div class="modal-footer">
+	            	<span class="pull-left" id="link_file"></span>
+	                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+	                <button class="btn btn-success" aria-hidden="true">Upload</button>
+	            </div>
+			</form>                    
+        </div>
+    </div>
+</div>
 @endsection
 
 @section("script")
 
 <script type="text/javascript">
 	$(document).ready(function(){
+		// info total bayar pada pojok kanan atas nota
 		var sum = 0;
 		$(".harga_item").each(function(){
 			sum = parseInt($(this).val())+sum;
 		});
-		// sum = new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(sum);
+		// console.log();
+		if (isNaN(sum)) {
+			sum = 0;
+		}
 		$("#total_harga").text(new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(sum));
 
+		// input kurang bayar
 		var sudah_bayar = $("input[name='bayar']").val();
 
 		$("input[name='kurang_bayar']").val(sum-sudah_bayar);
 		$("input[name='bayar']").on('keyup mouseup', function(){
 			$("input[name='kurang_bayar']").val(sum - $(this).val());
 		});
+
+		// modal upload file
+		$("#upload_file").on("show.bs.modal", function (event) {
+                const detail_nota = $(event.relatedTarget);
+
+                var detail_nota_id = detail_nota.data("item-id");
+                var file_lama = detail_nota.data("file-lama");
+
+                $("input[name='detail_nota_id']").val(detail_nota_id);
+                $("input[name='file_lama']").val(file_lama);
+
+                file_lama = file_lama.replace("public/", "");
+                // console.log(file_lama);
+                if (file_lama != '') {
+                	$("span#link_file").html('<a href="{{ url("/storage") }}/'+ file_lama +'" class="pull-left">Lihat File</a>');
+                }else{
+                	$("span#link_file").empty();
+                }
+                
+                
+            });
 	});
 </script>
 

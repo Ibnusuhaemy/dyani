@@ -21,7 +21,7 @@ class DetailNota extends Migration
             $table->integer("jumlah")->nullable();
             $table->integer("bahan_baku_id")->nullable();
             $table->string("status", 10)->nullable();
-            $table->string("file_desain", 50)->nullable();
+            $table->string("file_desain", 75)->nullable();
             $table->integer("desainer_id")->nullable();
             $table->integer("produksi_id")->nullable();
             $table->integer("harga")->nullable();
