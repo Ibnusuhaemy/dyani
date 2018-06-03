@@ -34,14 +34,14 @@
 			   	<div class="btn-toolbar pull-right">
 				<div class="btn-group">
 				<button disabled="" class="btn btn-circle btn-bordered btn-fill btn-to-success show-tooltip" title="" href="#" data-original-title="Tambah Item Pesanan"><i class="fa fa-plus"></i></button>
-				{{-- <button disabled="" class="btn btn-circle btn-bordered btn-fill btn-to-warning show-tooltip" title="" href="#" data-original-title="Pembayaran"><i class="fa fa-money"></i></button> --}}
-				<button disabled="" class="btn btn-circle btn-bordered btn-fill btn-to-info show-tooltip" title="" href="#" data-original-title="Print"><i class="fa fa-print"></i></button>
-				</div>
-				{{-- <div class="btn-group">
-					<a class="btn btn-circle btn-bordered btn-fill btn-to-danger btn-danger show-tooltip" title="" href="#" data-original-title="Delete selected"><i class="fa fa-trash-o"></i></a>
-				
+				<button disabled="" class="btn btn-circle btn-bordered btn-fill btn-to-warning show-tooltip" title="" data-original-title="Invoice"><i class="fa fa-money"></i></button>
+				<button disabled="" class="btn btn-circle btn-bordered btn-fill btn-to-info show-tooltip" title="" data-original-title="Cetak"><i class="fa fa-print"></i></button>
 				</div>
 				<div class="btn-group">
+					<button disabled="" class="btn btn-circle btn-bordered btn-fill btn-to-danger show-tooltip" title="" href="#" data-original-title="Hapus"><i class="fa fa-trash-o"></i></button>
+				
+				</div>
+				{{-- <div class="btn-group">
 				<a class="btn btn-circle btn-bordered btn-fill btn-to-lime show-tooltip" title="" href="#" data-original-title="Refresh"><i class="fa fa-repeat"></i></a>
 				</div> --}}
 				</div>

@@ -60,8 +60,8 @@
                                           <td>
                                               <a class="btn btn-success" href="{{ url("/pemesanan/".$nota->id) }}"><i class="fa fa-cog"></i> Detail</a>
                                               {{-- <a class="btn btn-success" href="edatapesan.html"><i class="fa fa-external-link"></i> Edit</a> --}}
-                                              <a class="btn btn-danger" href=""><i class="fa fa-eraser"></i> Hapus</a>
-                                              <a class="btn btn-success" href=""><i class="fa fa-print"></i> Cetak</a>
+                                              {{-- <a class="btn btn-danger" href=""><i class="fa fa-eraser"></i> Hapus</a> --}}
+                                              <a class="btn btn-success" href="{{ url("invoice/".$nota->id."/cetak") }}" target="_blank"><i class="fa fa-print"></i> Cetak</a>
                                           </td>
                                           </tr>
                                         @endforeach

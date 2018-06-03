@@ -57,6 +57,19 @@ class PemesananController extends Controller
         return redirect()->back();
     }
 
+    function invoice($nota_id, $is_cetak = null){
+        $nota = Nota::with(["detail_nota.bahan_baku", "detail_nota.produk",  "pelanggan"])->findOrFail($nota_id);
+        // $detail_nota = Detail_nota::with('produk', 'bahan_baku')->where("nota_id", $nota_id)->get();
+        $total_harga = $nota->detail_nota->sum("harga");
+        // dd($total_harga);
+        if(!is_null($is_cetak) && $is_cetak=='cetak'){
+            return view("pemesanan.cetak", compact('nota', 'total_harga'));
+        }elseif(!is_null($is_cetak) && $is_cetak != 'cetak'){
+            abort(404);
+        }
+        return view("pemesanan.invoice", compact('nota', 'total_harga'));
+    }
+
     function detail($nota_id){
 		$nota = Nota::find($nota_id);
 		$produk = Produk::all();
@@ -102,6 +115,30 @@ class PemesananController extends Controller
         return redirect()->back();
     }
 
+    function updateDesain(Request $request){
+        $detail_nota = Detail_nota::findOrFail($request->detail_nota_id);
+        $detail_nota->catatan_desain = $request->catatan_desain;
+        $detail_nota->save();
+
+        return redirect()->back();
+    }
+
+    function updateFinishing(Request $request){
+        $detail_nota = Detail_nota::findOrFail($request->detail_nota_id);
+        $detail_nota->catatan_finishing = $request->catatan_finishing;
+        $detail_nota->save();
+
+        return redirect()->back();
+    }
+
+    function updateCatatan(Request $request){
+        $detail_nota = Detail_nota::findOrFail($request->detail_nota_id);
+        $detail_nota->catatan = $request->catatan;
+        $detail_nota->save();
+
+        return redirect()->back();
+    }
+
     function uploadFile(Request $request){
 
         $this->validate($request, [
@@ -115,5 +152,19 @@ class PemesananController extends Controller
         $detail_nota->save();
         Storage::delete($request->file_lama);
         return redirect()->back();
+    }
+
+    function hapusItem($id){
+        $detail_nota = Detail_nota::findOrFail($id);
+        $detail_nota->delete();
+
+        return redirect()->back();
+    }
+
+    function hapusNota(Request $request){
+        $nota = Nota::findOrFail($request->id);
+        $nota->delete();
+
+        return redirect("/pemesanan");
     }
 }

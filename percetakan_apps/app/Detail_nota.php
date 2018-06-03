@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Detail_nota extends Model
 {
+	use SoftDeletes;
+	
     protected $table = "detail_nota";
 
     function produk(){

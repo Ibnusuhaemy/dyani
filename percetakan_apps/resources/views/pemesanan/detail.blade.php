@@ -34,12 +34,17 @@
 			   	<div class="btn-toolbar pull-right">
 				<div class="btn-group">
 				<a class="btn btn-circle btn-bordered btn-fill btn-to-success show-tooltip" title="" href="#" data-original-title="Tambah Item Pesanan" data-toggle="modal" data-target="#tambah_pesanan"><i class="fa fa-plus"></i></a>
-				{{-- <a class="btn btn-circle btn-bordered btn-fill btn-to-warning show-tooltip" title="" href="#" data-original-title="Pembayaran"><i class="fa fa-money"></i></a> --}}
-				<a class="btn btn-circle btn-bordered btn-fill btn-to-info show-tooltip" title="" href="#" data-original-title="Print"><i class="fa fa-print"></i></a>
+				<a class="btn btn-circle btn-bordered btn-fill btn-to-warning show-tooltip" title="" href="{{ url("/invoice/".$nota->id) }}" data-original-title="Invoice"><i class="fa fa-money"></i></a>
+				<a class="btn btn-circle btn-bordered btn-fill btn-to-info show-tooltip" title="" href="{{ url("/invoice/".$nota->id."/cetak") }}" target="_blank" data-original-title="Cetak"><i class="fa fa-print"></i></a>
 				</div>
-				{{-- <div class="btn-group">
-					<a class="btn btn-circle btn-bordered btn-fill btn-to-danger btn-danger show-tooltip" title="" href="#" data-original-title="Delete selected"><i class="fa fa-trash-o"></i></a>
-				
+				<div class="btn-group">
+					<form action="{{ url("/hapus-nota") }}" method="post">
+						{{ csrf_field() }}
+						<input type="hidden" name="id" value="{{ $nota->id }}">
+						<button class="btn btn-circle btn-bordered btn-fill btn-to-danger btn-danger show-tooltip" title="" href="#" data-original-title="Hapus Nota"><i class="fa fa-trash-o"></i></button>
+					</form>
+				</div>
+				{{-- 
 				</div>
 				<div class="btn-group">
 				<a class="btn btn-circle btn-bordered btn-fill btn-to-lime show-tooltip" title="" href="#" data-original-title="Refresh"><i class="fa fa-repeat"></i></a>
@@ -199,11 +204,14 @@
 							<td>
 								<div class="btn-group"> <button type="button" class="btn btn-circle btn-bordered btn-fill dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-ellipsis-h"></i></button> <ul class="dropdown-menu dropdown-menu-right"> 
 									<li><a href="#" data-toggle="modal" data-target="#upload_file" data-file-lama="{{ $detail_nota->file_desain }}" data-item-id="{{ $detail_nota->id }}" >Upload File</a></li>
-									<li><a href="#" data-toggle="modal" data-target="#" data-item-id={{ $detail_nota->id }}>Proses Desain</a></li>
-									<li><a href="#" data-toggle="modal" data-target="#" data-item-id={{ $detail_nota->id }}>Finishing</a></li>
-									<li><a href="#" data-toggle="modal" data-target="#" data-item-id={{ $detail_nota->id }}>Catatan Lain</a></li>
+									<li><a href="#" data-toggle="modal" data-target="#catatan_desain" data-item-id="{{ $detail_nota->id }}" data-catatan-desain = "{{ $detail_nota->catatan_desain }}">Proses Desain</a></li>
+									<li><a href="#" data-toggle="modal" data-target="#catatan_finishing" data-item-id="{{ $detail_nota->id }}" data-catatan-finishing = "{{ $detail_nota->catatan_finishing }}">Finishing</a></li>
+									<li><a href="#" data-toggle="modal" data-target="#catatan" data-item-id="{{ $detail_nota->id }}" data-catatan = "{{ $detail_nota->catatan }}">Catatan Lain</a></li>
 									<li role="separator" class="divider"></li>
-									<li><a href="#">Hapus</a></li>
+									<li>
+										<a href="{{ url("/hapus-item/".$detail_nota->id) }}" style="color:red">Hapus</a>
+										</form>
+									</li>
 								</ul> </div>
 							</td>
 							</tr>	
@@ -331,6 +339,96 @@
         </div>
     </div>
 </div>
+
+<div id="catatan_desain" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+			<form action="{{ url("/update-desain") }}" method="post">
+				{{ csrf_field() }}
+	            <input type="hidden" name="detail_nota_id" value="">
+	            {{-- <input type="hidden" name="nota_id" value="{{ $nota->id }}"> --}}
+	            <div class="modal-header">
+	                <h3 id="myModalLabel1">Catatan Desain</h3>
+	            </div>
+	            <div class="modal-body">
+	                <div class="form-horizontal">
+						<div class="form-group">
+									<div class="col-sm-12 col-lg-12 controls">
+										<textarea name="catatan_desain" id="" cols="69" rows="5"></textarea>
+										<p class="help-inline">100 karakter</p>
+									</div>
+								</div>
+	                </div>
+	            </div>
+	            <div class="modal-footer">
+	            	<span class="pull-left" id="link_file"></span>
+	                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+	                <button class="btn btn-success" aria-hidden="true">Simpan</button>
+	            </div>
+			</form>                    
+        </div>
+    </div>
+</div>
+
+<div id="catatan_finishing" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+			<form action="{{ url("/update-finishing") }}" method="post">
+				{{ csrf_field() }}
+	            <input type="hidden" name="detail_nota_id" value="">
+	            {{-- <input type="hidden" name="nota_id" value="{{ $nota->id }}"> --}}
+	            <div class="modal-header">
+	                <h3 id="myModalLabel1">Catatan Finishing</h3>
+	            </div>
+	            <div class="modal-body">
+	                <div class="form-horizontal">
+						<div class="form-group">
+									<div class="col-sm-12 col-lg-12 controls">
+										<textarea name="catatan_finishing" id="" cols="69" rows="5"></textarea>
+										<p class="help-inline">100 karakter</p>
+									</div>
+								</div>
+	                </div>
+	            </div>
+	            <div class="modal-footer">
+	            	<span class="pull-left" id="link_file"></span>
+	                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+	                <button class="btn btn-success" aria-hidden="true">Simpan</button>
+	            </div>
+			</form>                    
+        </div>
+    </div>
+</div>
+
+<div id="catatan" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+			<form action="{{ url("/update-catatan") }}" method="post">
+				{{ csrf_field() }}
+	            <input type="hidden" name="detail_nota_id" value="">
+	            {{-- <input type="hidden" name="nota_id" value="{{ $nota->id }}"> --}}
+	            <div class="modal-header">
+	                <h3 id="myModalLabel1">Catatan</h3>
+	            </div>
+	            <div class="modal-body">
+	                <div class="form-horizontal">
+						<div class="form-group">
+									<div class="col-sm-12 col-lg-12 controls">
+										<textarea name="catatan" id="" cols="69" rows="5"></textarea>
+										<p class="help-inline">100 karakter</p>
+									</div>
+								</div>
+	                </div>
+	            </div>
+	            <div class="modal-footer">
+	            	<span class="pull-left" id="link_file"></span>
+	                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+	                <button class="btn btn-success" aria-hidden="true">Simpan</button>
+	            </div>
+			</form>                    
+        </div>
+    </div>
+</div>
 @endsection
 
 @section("script")
@@ -374,6 +472,37 @@
                 	$("span#link_file").empty();
                 }
                 
+                
+            });
+
+		$("#catatan_desain").on("show.bs.modal", function (event) {
+                const detail_nota = $(event.relatedTarget);
+
+                var detail_nota_id = detail_nota.data("item-id");
+                var catatan_desain = detail_nota.data("catatan-desain");
+
+                $("input[name='detail_nota_id']").val(detail_nota_id);
+                $("textarea[name='catatan_desain']").val(catatan_desain);         
+                
+            });
+		$("#catatan_finishing").on("show.bs.modal", function (event) {
+                const detail_nota = $(event.relatedTarget);
+
+                var detail_nota_id = detail_nota.data("item-id");
+                var catatan_finishing = detail_nota.data("catatan-finishing");
+
+                $("input[name='detail_nota_id']").val(detail_nota_id);
+                $("textarea[name='catatan_finishing']").val(catatan_finishing);         
+                
+            });
+		$("#catatan").on("show.bs.modal", function (event) {
+                const detail_nota = $(event.relatedTarget);
+
+                var detail_nota_id = detail_nota.data("item-id");
+                var catatan = detail_nota.data("catatan");
+
+                $("input[name='detail_nota_id']").val(detail_nota_id);
+                $("textarea[name='catatan']").val(catatan);         
                 
             });
 	});
