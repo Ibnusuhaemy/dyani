@@ -19,18 +19,26 @@ class PemesananController extends Controller
     }
 
     public function add(){
-    	return view("pemesanan.tambah");
+        $pelanggan = Pelanggan::all();
+    	return view("pemesanan.tambah", compact('pelanggan'));
     }
 
     public function buatNota(Request $request){
     	// dd($request->user()->id);
-    	$pelanggan = new Pelanggan;
-    	$pelanggan->nama = $request->nama;
-    	$pelanggan->telp = $request->telp;
-    	$pelanggan->email = $request->email;
-    	$pelanggan->alamat = $request->alamat;
-    	$pelanggan->user_id = $request->user()->id;
-    	$pelanggan->save();
+        $pelanggan_id = $request->pelanggan_id;
+        // dd($pelanggan_id);
+        if(is_null($pelanggan_id)){
+            $pelanggan = new Pelanggan;
+            $pelanggan->nama = $request->nama;
+            $pelanggan->telp = $request->telp;
+            $pelanggan->email = $request->email;
+            $pelanggan->alamat = $request->alamat;
+            $pelanggan->user_id = $request->user()->id;
+            $pelanggan->save();
+
+            $pelanggan_id = $pelanggan->id;
+        }
+    	
 
     	$nota = new Nota;
     	$nota->kode = $this->buatKodeNote($request->user()->id);
@@ -39,7 +47,7 @@ class PemesananController extends Controller
         $nota->transaksi = $request->transaksi;
         $nota->bayar = $request->bayar;
     	$nota->created_by = $request->user()->id;
-    	$nota->pelanggan_id = $pelanggan->id;
+    	$nota->pelanggan_id = $pelanggan_id;
     	$nota->save();
 
     	return redirect("/pemesanan/".$nota->id);

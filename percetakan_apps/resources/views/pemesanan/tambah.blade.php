@@ -56,6 +56,7 @@
 					<div class="tab-pane fade active in" id="nota">
 						<form action="{{ url("/pemesanan") }}" class="form-horizontal" id="validation-form" method="post">
 							{{ csrf_field() }}
+							<input type="hidden" name="pelanggan_id" value="">
 						{{-- <div class="form-group">
 							<label class="col-sm-3 col-lg-2 control-label" for="username">No Pesanan:</label>
 							<div class="col-sm-6 col-lg-4 controls">
@@ -67,14 +68,14 @@
 							<div class="form-group">
 							<label class="col-sm-3 col-lg-3 control-label" for="konsumen">Nama Konsumen:</label>
 							<div class="col-sm-6 col-lg-6 controls">
-								<input type="text" name="nama" id="konsumen" class="form-control" data-rule-required="true" data-rule-minlength="3" />
+								<input type="text" name="nama" id="nama" class="form-control" data-rule-required="true" data-rule-minlength="3" />
 							</div>
-							<span class="col-sm-3 col-lg-3"><i class="fa fa-users"></i> <a href="#">Cari Pelanggan</a></span>
+							<span class="col-sm-3 col-lg-3"><i class="fa fa-users"></i> <a href="#" data-target="#pelanggan" data-toggle="modal">Cari Pelanggan</a></span>
 						</div>
 						<div class="form-group">
 							<label class="col-sm-3 col-lg-3 control-label" for="nama">Telp:</label>
 							<div class="col-sm-6 col-lg-6 controls">
-								<input type="number" name="telp" id="nama" class="form-control" data-rule-required="true" data-rule-minlength="4" />
+								<input type="number" name="telp" id="telp" class="form-control" data-rule-required="true" data-rule-minlength="4" />
 							</div>
 						</div>
 						<div class="form-group">
@@ -191,4 +192,81 @@
     </div>
 </div>
 
+@endsection
+
+@section("modal")
+<div id="pelanggan" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+	            <div class="modal-header">
+	                <h3 id="myModalLabel1">Pilih Pelanggan</h3>
+	            </div>
+	            <div class="modal-body">
+	                <table class="table table-advance">
+						<thead>
+							<tr>
+								<th><a class="sort-asc sort-desc" href="#">Nama</a></th>
+								<th><a class="sort-asc sort-desc" href="#">Telp</a></th>
+								<th><a class="sort-asc sort-desc" href="#">Email</a></th>
+								<th><a class="sort-asc sort-desc" href="#">Pilih</a></th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach($pelanggan as $pelanggan)
+								<tr>
+									<td>{{ $pelanggan->nama }}</td>
+									<td>{{ $pelanggan->telp }}</td>
+									<td>{{ $pelanggan->email }}</td>
+									<td><button class="btn btn-circle btn-bordered btn-fill btn-to-success btn-success btn-tambah" data-id="{{ $pelanggan->id }}" data-nama="{{ $pelanggan->nama }}" data-telp="{{ $pelanggan->telp }}" data-email="{{ $pelanggan->email }}" data-alamat="{{ $pelanggan->alamat }}"><i class="fa fa-user-plus" aria-hidden="true"></i></button></td>
+								</tr>
+							@endforeach
+							
+						</tbody>
+					</table>
+	            </div>
+	            <div class="modal-footer">
+	            	<button class="btn" data-dismiss="modal">Close</button>
+	            </div>                 
+        </div>
+    </div>
+</div>
+@endsection
+
+@section("script")
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("button.btn-tambah").click(function(){
+			// console.log($(this).data("id"));
+			var id = $(this).data("id");
+			var nama = $(this).data("nama");
+			var telp = $(this).data("telp");
+			var email = $(this).data("email");
+			var alamat = $(this).data("alamat");
+
+			$("input[name='pelanggan_id']").val(id);
+			$("input[name='nama']").val(nama);
+			$("input[name='telp']").val(telp);
+			$("input[name='email']").val(email);
+			$("textarea[name='alamat']").val(alamat);
+
+			$("input[name='telp']").prop("disabled", true);
+			$("input[name='email']").prop("disabled", true);
+			$("textarea[name='alamat']").prop("disabled", true);
+
+			$("#pelanggan").modal("toggle");
+		});
+
+		$("input[name='nama']").on("keyup", function(){
+			$("input[name='telp']").prop("disabled", false);
+			$("input[name='email']").prop("disabled", false);
+			$("textarea[name='alamat']").prop("disabled", false);
+
+			$("input[name='pelanggan_id']").val('');
+			$("input[name='telp']").val('');
+			$("input[name='email']").val('');
+			$("textarea[name='alamat']").val('');
+
+		});
+	});
+</script>
 @endsection
