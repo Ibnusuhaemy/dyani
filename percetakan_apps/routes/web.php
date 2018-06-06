@@ -36,6 +36,12 @@ Route::middleware("auth")->group(function(){
 		Route::post('/update-catatan', 'PemesananController@updateCatatan');
 	// }
 
+		Route::get("/pelanggan", "PelangganController@index");
+		Route::get("/tambah-pelanggan", "PelangganController@baru");
+		Route::get("/pelanggan/{id}", "PelangganController@detail");
+		Route::post("/update-pelanggan", "PelangganController@update");
+		Route::get("/hapus-pelanggan/{id}", "PelangganController@hapus");
+
 });
 
 

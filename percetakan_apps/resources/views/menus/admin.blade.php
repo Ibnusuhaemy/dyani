@@ -13,10 +13,10 @@
 	        </a>
 	        <!-- BEGIN Submenu -->
 	        <ul class="submenu">
-	                    <li class="{{ Request::is('/tkonsumen') ? 'active' : '' }}">
-	                        <a href="{{ url('/tkonsumen') }}">
+	                    <li class="{{ Request::is('/pelanggan') ? 'active' : '' }}">
+	                        <a href="{{ url('/pelanggan') }}">
 	                            <i class="glyphicon glyphicon-user"></i>
-	                            <span>Konsumen</span>
+	                            <span>Pelanggan</span>
 	                        </a>
 	                    </li>
 	                    <li class="{{ Request::is('/tkaryawan') ? 'active' : '' }}">
