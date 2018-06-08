@@ -38,9 +38,15 @@ Route::middleware("auth")->group(function(){
 
 		Route::get("/pelanggan", "PelangganController@index");
 		Route::get("/tambah-pelanggan", "PelangganController@baru");
-		Route::get("/pelanggan/{id}", "PelangganController@detail");
+		Route::post("/tambah-pelanggan", "PelangganController@simpan");
 		Route::post("/update-pelanggan", "PelangganController@update");
 		Route::get("/hapus-pelanggan/{id}", "PelangganController@hapus");
+
+		Route::get("/bahan-baku", "BahanBakuController@index");
+		Route::get("/tambah-bahan-baku", "BahanBakuController@baru");
+		Route::post("/tambah-bahan-baku", "BahanBakuController@simpan");
+		Route::post("/update-bahan-baku", "BahanBakuController@update");
+		Route::get("/hapus-bahan-baku/{id}", "BahanBakuController@hapus");
 
 });
 

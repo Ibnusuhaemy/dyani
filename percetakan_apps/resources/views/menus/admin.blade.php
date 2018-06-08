@@ -25,8 +25,8 @@
 	                            <span>Karyawan</span>
 	                        </a>
 	                    </li>
-	                    <li class="{{ Request::is('/tbahan') ? 'active' : '' }}">
-	                        <a href="{{ url('/tbahan') }}">
+	                    <li class="{{ Request::is('/bahan-baku') ? 'active' : '' }}">
+	                        <a href="{{ url('/bahan-baku') }}">
 	                            <i class="glyphicon glyphicon-list-alt"></i>
 	                            <span>Bahan Baku</span>
 	                        </a>

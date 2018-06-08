@@ -29,7 +29,7 @@
                 <h3><i class="fa fa-table"></i> Data Konsumen</h3>
             </div>
             <div class="box-content">
-              <a href="{{ url("/tambah-konsumen") }}" class="btn btn-success"><i class="glyphicon glyphicon-plus-sign"></i> Tambah Data</a>
+              <a href="{{ url("/tambah-pelanggan") }}" class="btn btn-success"><i class="glyphicon glyphicon-plus-sign"></i> Tambah Data</a>
               <hr>
               
               <div class="table-responsive" style="border:0;">
@@ -51,13 +51,13 @@
 
                       		<tr>
                               <td>{{ $i++ }}</td>
-                              <td>{{ $pelanggan->nama }}</td>
+                              <td>{{ ucwords($pelanggan->nama) }}</td>
                               <td>{{ $pelanggan->alamat }}</td>
                               <td>{{ $pelanggan->telp }}</td>
                               <td>
                                   <a class="btn btn-success" href="#detail_pelanggan" data-toggle="modal" data-toggle="modal" data-nama="{{ $pelanggan->nama }}"  data-alamat="{{ $pelanggan->alamat }}"  data-telp="{{ $pelanggan->telp }}" data-email={{ $pelanggan->email }}><i class="fa fa-cog"></i> Detail</a>
-                                  <a class="btn btn-success" href="#" data-target="#update_pelanggan" data-toggle="modal" data-nama="{{ $pelanggan->nama }}"  data-alamat="{{ $pelanggan->alamat }}"  data-telp="{{ $pelanggan->telp }}" data-id="{{ $pelanggan->id }}"><i class="fa fa-external-link"></i> Edit</a>
-                                  <a href="{{ url("/hapus-konsumen/".$pelanggan->id) }}" class="btn btn-success"><i class="fa fa-trash"></i> Hapus</a>
+                                  <a class="btn btn-success" href="#" data-target="#update_pelanggan" data-toggle="modal" data-nama="{{ $pelanggan->nama }}"  data-alamat="{{ $pelanggan->alamat }}"  data-telp="{{ $pelanggan->telp }}" data-id="{{ $pelanggan->id }}" data-email={{ $pelanggan->email }}><i class="fa fa-external-link"></i> Edit</a>
+                                  <a href="{{ url("/hapus-pelanggan/".$pelanggan->id) }}" class="btn btn-success"><i class="fa fa-trash"></i> Hapus</a>
                               </td>
                           </tr>
 
@@ -114,6 +114,7 @@
         <div class="modal-content">
         	<form action="{{ url("/update-pelanggan") }}" method="post">
         		<input type="hidden" name="id">
+            {{ csrf_field() }}
         	<div class="modal-header">
                 <h3 id="myModalLabel1">Update Data Pelanggan</h3>
             </div>
@@ -166,6 +167,23 @@
                 $("#detail_alamat").text(alamat);    
                 $("#detail_telp").text(telp);    
                 $("#detail_email").text(email);    
+                
+            });
+
+    $("#update_pelanggan").on("show.bs.modal", function (event) {
+                const pelanggan = $(event.relatedTarget);
+
+                var pelanggan_id = pelanggan.data("id");
+                var nama = pelanggan.data("nama");
+                var alamat = pelanggan.data("alamat");
+                var telp = pelanggan.data("telp");
+                var email = pelanggan.data("email");
+
+                $("input[name='nama']").val(nama);    
+                $("input[name='id']").val(pelanggan_id);    
+                $("textarea[name='alamat']").val(alamat);    
+                $("input[name='telp']").val(telp);    
+                $("input[name='email']").val(email);    
                 
             });
 	});
