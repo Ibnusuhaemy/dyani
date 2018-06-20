@@ -44,7 +44,7 @@ Route::middleware("auth")->group(function(){
 
 		Route::get("/bahan-baku", "BahanBakuController@index");
 		Route::get("/tambah-bahan-baku", "BahanBakuController@baru");
-		Route::post("/tambah-bahan-baku", "BahanBakuController@simpan");
+		Route::post("/bahan-baku", "BahanBakuController@simpan");
 		Route::post("/update-bahan-baku", "BahanBakuController@update");
 		Route::get("/hapus-bahan-baku/{id}", "BahanBakuController@hapus");
 

@@ -5,7 +5,7 @@
 	        <span>Dashboard</span>
 	    </a>
 	</li>
-	<li>
+	<li class="{{ !Request::is('/laporan') && !Request::is('/') ? 'active' : '' }}">
 	        <a href="#" class="dropdown-toggle">
 	            <i class="fa fa-archive"></i>
 	            <span>Master</span>
