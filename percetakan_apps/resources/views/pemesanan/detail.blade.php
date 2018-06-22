@@ -431,7 +431,13 @@
 </div>
 @endsection
 
+@section("style")
+<link rel="stylesheet" href="{{ asset("assets/data-tables/bootstrap3/dataTables.bootstrap.css") }}">
+@endsection
+
 @section("script")
+<script type="text/javascript" src="{{ asset("assets/data-tables/jquery.dataTables.js") }}"></script>
+<script type="text/javascript" src="{{ asset("assets/data-tables/bootstrap3/dataTables.bootstrap.js") }}"></script>
 
 <script type="text/javascript">
 	$(document).ready(function(){

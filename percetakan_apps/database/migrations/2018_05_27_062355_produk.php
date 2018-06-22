@@ -18,7 +18,7 @@ class Produk extends Migration
             $table->string('nama', 25);
             $table->integer('harga_satuan');
             $table->string('satuan', 15);
-            $table->string('deskripsi', 100);
+            $table->string('deskripsi', 100)->nullable();
             $table->integer('created_by');
             $table->timestamps();
             $table->softDeletes();

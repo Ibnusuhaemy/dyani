@@ -51,13 +51,13 @@
                     <div class="form-group">
                         <label class="col-sm-3 col-lg-2 control-label" for="jenis">Harga Beli:</label>
                         <div class="col-sm-6 col-lg-4 controls">
-                            <input type="text" name="harga_beli" id="jenis" class="form-control" data-rule-required="true"/>
+                            <input type="number" name="harga_beli" id="jenis" class="form-control" data-rule-required="true" min="1" />
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 col-lg-2 control-label" for="jenis">Harga Jual:</label>
                         <div class="col-sm-6 col-lg-4 controls">
-                            <input type="text" name="harga_jual" id="jenis" class="form-control" data-rule-required="true" data-rule-minlength="3" />
+                            <input type="number" name="harga_jual" id="jenis" class="form-control" data-rule-required="true" data-rule-minlength="3" min="1" />
                         </div>
                     </div>
                     

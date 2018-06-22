@@ -169,7 +169,13 @@
 </div>
 @endsection
 
+@section("style")
+<link rel="stylesheet" href="{{ asset("assets/data-tables/bootstrap3/dataTables.bootstrap.css") }}">
+@endsection
+
 @section("script")
+<script type="text/javascript" src="{{ asset("assets/data-tables/jquery.dataTables.js") }}"></script>
+<script type="text/javascript" src="{{ asset("assets/data-tables/bootstrap3/dataTables.bootstrap.js") }}"></script>
 <script type="text/javascript">
     $(document).ready(function(){
         $("#detail_bahan_baku").on("show.bs.modal", function (event) {
@@ -183,6 +189,7 @@
                 $("#detail_nama").text(nama);    
                 $("#detail_qty").text(qty);    
                 $("#detail_harga_jual").text(harga_jual);    
+                $("#detail_harga_beli").text(harga_beli);    
                 $("#detail_satuan").text(satuan);    
                 
             });

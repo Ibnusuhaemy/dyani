@@ -19,10 +19,10 @@
 	                            <span>Pelanggan</span>
 	                        </a>
 	                    </li>
-	                    <li class="{{ Request::is('/tkaryawan') ? 'active' : '' }}">
-	                        <a href="{{ url('/tkaryawan') }}">
+	                    <li class="{{ Request::is('/pegawai') ? 'active' : '' }}">
+	                        <a href="{{ url('/pegawai') }}">
 	                            <i class="fa fa-users"></i>
-	                            <span>Karyawan</span>
+	                            <span>Pegawai</span>
 	                        </a>
 	                    </li>
 	                    <li class="{{ Request::is('/bahan-baku') ? 'active' : '' }}">
@@ -31,20 +31,20 @@
 	                            <span>Bahan Baku</span>
 	                        </a>
 	                    </li>
-	                    <li class="{{ Request::is('/tkategori') ? 'active' : '' }}">
-	                        <a href="{{ url('/tkategori') }}">
+	                    <li class="{{ Request::is('/produk') ? 'active' : '' }}">
+	                        <a href="{{ url('/produk') }}">
 	                            <i class="glyphicon glyphicon-tasks"></i>
-	                            <span>Kategori Bahan</span>
+	                            <span>Produk</span>
 	                        </a>
 	                    </li>
-	                    <li class="{{ Request::is('/tukuran') ? 'active' : '' }}">
+	                    {{-- <li class="{{ Request::is('/tukuran') ? 'active' : '' }}">
 	                        <a href="{{ url('/tukuran') }}">
 	                            <i class="fa fa-tags"></i>
 	                            <span>Ukuran</span>
 	                        </a>
-	                    </li>
-	                    <li class="{{ Request::is('/tbank') ? 'active' : '' }}">
-	                            <a href="{{ url('/tbank') }}">
+	                    </li> 
+	                    <li class="{{ Request::is('/bank') ? 'active' : '' }}">
+	                            <a href="{{ url('/bank') }}">
 	                                <i class="fa fa-credit-card"></i>
 	                                <span>Bank</span>
 	                            </a>
@@ -54,7 +54,7 @@
 	                            <i class="fa fa-briefcase"></i>
 	                            <span>Supplier</span>
 	                        </a>
-	                    </li>
+	                    </li> --}}
 	        </ul>
 	        <!-- END Submenu -->
 	</li>
@@ -82,8 +82,8 @@
 	        <span>Transaksi Gudang</span>
 	    </a>
 	</li> --}}
-	<li class="{{ Request::is('/tlaporan') ? 'active' : '' }}">
-	    <a href="{{ url('/tlaporan') }}">
+	<li class="{{ Request::is('/laporan') ? 'active' : '' }}">
+	    <a href="{{ url('/laporan') }}">
 	        <i class="fa fa-tags"></i>
 	        <span>Laporan Data</span>
 	    </a>
